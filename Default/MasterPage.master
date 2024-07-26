@@ -435,7 +435,7 @@
 
                     <div class="g-pa-20">
                         <%-- <div class="page-bar" runat="server" visible="false" id="DivBreadComb"--%>
-                        <div class="page-bar hide">
+                        <div class="page-bar ">
                             <ul class="page-breadcrumb">
                                 <asp:ContentPlaceHolder ID="cphBreadcrumb" runat="server">
                                 </asp:ContentPlaceHolder>
