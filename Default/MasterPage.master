@@ -397,17 +397,17 @@
                                 <ul class="sub-menu" style="display: none;">
                                     <li class="nav-item  ">
                                         <a href='<%=ResolveClientUrl("~/AdminPanel/Security/SEC_Menu/SEC_MenuList.aspx") %>' class="nav-link ">
-                                            <span class="title">Expense Type</span>
+                                            <span class="title">Menu</span>
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
                                         <a href='<%=ResolveClientUrl("~/AdminPanel/Security/SEC_User/SEC_UserList.aspx") %>' class="nav-link ">
-                                            <span class="title">Financial Year</span>
+                                            <span class="title">User</span>
                                         </a>
                                     </li>
                                     <li class="nav-item  ">
                                         <a href='<%=ResolveClientUrl("~/AdminPanel/Security/Demo/DemoList.aspx") %>' class="nav-link ">
-                                            <span class="title">Demo</span>
+                                            <span class="title">Demo Crud</span>
                                         </a>
                                     </li>
                                 </ul>

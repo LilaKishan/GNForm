@@ -367,10 +367,10 @@
                                                             	<%#Eval("Hospital") %>
                                                             </td>
                                                             <td>
-                                                            	<%#Eval("FinYearID") %>
+                                                            	<%#Eval("FinYearName") %>
                                                             </td>
                                                             <td>
-                                                            	<%#Eval("ReceiptTypeID") %>
+                                                            	<%#Eval("ReceiptTypeName") %>
                                                             </td>
                                                             <td class="text-nowrap text-center">
                                                                 <asp:HyperLink ID="hlView" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Account/ACC_Transaction/ACC_TransactionView.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>

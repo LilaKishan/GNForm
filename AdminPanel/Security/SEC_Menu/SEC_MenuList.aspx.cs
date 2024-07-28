@@ -130,7 +130,7 @@ public partial class AdminPanel_SEC_Menu_SEC_MenuList : System.Web.UI.Page
 
         SEC_MenuBAL balSEC_Menu = new SEC_MenuBAL();
 
-        DataTable dt = balSEC_Menu.SelectPage(Offset, PageRecordSize, out TotalRecords);
+        DataTable dt = balSEC_Menu.SelectPage(Offset, PageRecordSize, out TotalRecords, ParentMenuID, MenuName,MenuDisplayName,FormName,Sequence);
 
         if(PageRecordSize == 0 && dt.Rows.Count > 0)
         {
@@ -330,7 +330,9 @@ public partial class AdminPanel_SEC_Menu_SEC_MenuList : System.Web.UI.Page
         		SqlString MenuDisplayName = SqlString.Null;
         		SqlString FormName = SqlString.Null;
         		SqlInt32 Sequence = SqlInt32.Null;
-		
+        Int32 TotalRecords = 0;
+        Int32 TotalPages = 1;
+
         if (txtParentMenuID.Text.Trim() != String.Empty)
         	ParentMenuID = Convert.ToInt32(txtParentMenuID.Text.Trim());
 
@@ -353,7 +355,7 @@ public partial class AdminPanel_SEC_Menu_SEC_MenuList : System.Web.UI.Page
             	Offset = (Convert.ToInt32(ViewState["CurrentPage"]) - 1) * PageRecordSize;
 
         SEC_MenuBAL balSEC_Menu = new SEC_MenuBAL();
-        DataTable dtSEC_Menu = balSEC_Menu.SelectPage(Offset, PageRecordSize, out TotalReceivedRecord);
+        DataTable dtSEC_Menu = balSEC_Menu.SelectPage(Offset, PageRecordSize,out TotalRecords, ParentMenuID, MenuName, MenuDisplayName, FormName, Sequence);
         if (dtSEC_Menu != null && dtSEC_Menu.Rows.Count > 0)
 		{
             Session["ExportTable"] = dtSEC_Menu;

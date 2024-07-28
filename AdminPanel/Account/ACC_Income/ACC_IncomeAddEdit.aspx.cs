@@ -200,7 +200,7 @@ public partial class AdminPanel_Account_ACC_Income_ACC_IncomeAddEdit : System.We
 				if (Request.QueryString["IncomeID"] != null && Request.QueryString["Copy"] == null) 
 				{
 					entACC_Income.IncomeID = CommonFunctions.DecryptBase64Int32(Request.QueryString["IncomeID"]);
-                    if (balACC_Income.Insert(entACC_Income))
+                    if (balACC_Income.Update(entACC_Income))
 					{
 						Response.Redirect("ACC_IncomeList.aspx");
 					}

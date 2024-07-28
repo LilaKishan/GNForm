@@ -270,7 +270,7 @@ namespace GNForm3C.DAL
 				return null;
 			}
 		}
-		public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords)
+		public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords,SqlInt32 HospitalID,SqlString UserName,SqlString Password)
 		{
 			TotalRecords = 0;
 			try
@@ -279,7 +279,10 @@ namespace GNForm3C.DAL
 				DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_SEC_User_SelectPage");
 				sqlDB.AddInParameter(dbCMD, "@PageOffset", SqlDbType.Int, PageOffset);
 				sqlDB.AddInParameter(dbCMD, "@PageSize", SqlDbType.Int, PageSize);
-				sqlDB.AddOutParameter(dbCMD, "@TotalRecords", SqlDbType.Int, 4);
+                sqlDB.AddInParameter(dbCMD, "@HospitalID", SqlDbType.Int, HospitalID);
+                sqlDB.AddInParameter(dbCMD, "@UserName", SqlDbType.NVarChar, UserName);
+                sqlDB.AddInParameter(dbCMD, "@Password", SqlDbType.NVarChar, Password);
+                sqlDB.AddOutParameter(dbCMD, "@TotalRecords", SqlDbType.Int, 4);
 
 				DataTable dtSEC_User = new DataTable("PR_SEC_User_SelectPage");
 

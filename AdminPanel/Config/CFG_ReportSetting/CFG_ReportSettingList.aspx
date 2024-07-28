@@ -338,7 +338,7 @@
                                                             	<%#Eval("IsPrintUserName") %>
                                                             </td>
                                                             <td>
-                                                            	<%#Eval("HospitalID") %>
+                                                            	<%#Eval("Hospital") %>
                                                             </td>
                                                             <td class="text-nowrap text-center">
                                                                 <asp:HyperLink ID="hlView" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Config/CFG_ReportSetting/CFG_ReportSettingView.aspx?ReportSettingID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("ReportSettingID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>

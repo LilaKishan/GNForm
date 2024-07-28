@@ -113,10 +113,10 @@ namespace GNForm3C.BAL
 			SEC_MenuDAL dalSEC_Menu = new SEC_MenuDAL();
 			return dalSEC_Menu.SelectAll();
 		}
-		public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords)
+		public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords, SqlInt32 parentmenuid, SqlString Menuname, SqlString MenuDisplayName, SqlString FormName, SqlInt32 sequence)
 		{
 			SEC_MenuDAL dalSEC_Menu = new SEC_MenuDAL();
-			return dalSEC_Menu.SelectPage(PageOffset, PageSize, out TotalRecords);
+			return dalSEC_Menu.SelectPage(PageOffset, PageSize, out TotalRecords,parentmenuid,Menuname,MenuDisplayName,FormName,sequence);
 		}
 
 		#endregion SelectOperation
