@@ -49,6 +49,11 @@ public partial class AdminPanel_ACC_Expense_ACC_ExpenseList : System.Web.UI.Page
             lblSearchResultHeader.Text = CV.SearchResultHeaderText;
             upr.DisplayAfter = CV.UpdateProgressDisplayAfter;
 
+            if (Request.QueryString["HospitalID"] != null)
+            {
+                ddlHospitalID.SelectedValue = CommonFunctions.DecryptBase64Int32(Request.QueryString["HospitalID"]).ToString();
+                ddlHospitalIDChanged();
+            }
             #endregion 12.2 Set Default Value
 
             #region 12.3 Set Help Text
@@ -424,7 +429,11 @@ public partial class AdminPanel_ACC_Expense_ACC_ExpenseList : System.Web.UI.Page
     #endregion 22.0 ClearControls
 
     #region 23.0 Fill Finyear Dropdown From Hopital
-    protected void ddlHospitalID_SelectedIndexChanged1(object sender, EventArgs e)
+    protected void ddlHospitalID_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ddlHospitalIDChanged();
+    }
+    private void ddlHospitalIDChanged()
     {
         if (ddlHospitalID.SelectedIndex > 0)
         {
@@ -432,7 +441,7 @@ public partial class AdminPanel_ACC_Expense_ACC_ExpenseList : System.Web.UI.Page
             SqlInt32 HospitalID = SqlInt32.Null;
 
             HospitalID = Convert.ToInt32(ddlHospitalID.SelectedValue);
-            CommonFillMethods.FillDropDownListExpenseFinYearIDByHospitalID(ddlFinYearID, HospitalID);
+            CommonFillMethods.FillDropDownListFinYearIDByHospitalID(ddlFinYearID, HospitalID);
 
         }
         else
@@ -440,7 +449,7 @@ public partial class AdminPanel_ACC_Expense_ACC_ExpenseList : System.Web.UI.Page
             ddlFinYearID.Items.Clear();
             ddlFinYearID.Items.Insert(0, new ListItem("Select Fin Year", "-99"));
             ddlExpenseTypeID.Items.Clear();
-            ddlExpenseTypeID.Items.Insert(0, new ListItem("Select Expense Type", "-99"));
+            ddlExpenseTypeID.Items.Insert(0, new ListItem("Select Income Type", "-99"));
 
         }
     }

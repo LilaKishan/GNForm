@@ -46,7 +46,12 @@ public partial class AdminPanel_MST_SubTreatment_MST_SubTreatmentList : System.W
             lblSearchHeader.Text = CV.SearchHeaderText;
             lblSearchResultHeader.Text = CV.SearchResultHeaderText;
             upr.DisplayAfter = CV.UpdateProgressDisplayAfter;
-			
+
+            if (Request.QueryString["HospitalID"] != null)
+            {
+                ddlHospitalID.SelectedValue = CommonFunctions.DecryptBase64Int32(Request.QueryString["HospitalID"]).ToString();
+
+            }
             #endregion 12.2 Set Default Value
 
             Search(1);

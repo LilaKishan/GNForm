@@ -183,6 +183,8 @@ public partial class AdminPanel_MasterDashboard : System.Web.UI.Page
 
         #endregion 13.3 Day Wise Month Wise Income/Expense Patient Count
 
+
+
     }
     #endregion 14.0 Show Button Event
 

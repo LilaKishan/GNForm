@@ -21,6 +21,8 @@
     <asp:UpdatePanel ID="upACC_Income" runat="server" EnableViewState="true" UpdateMode="Conditional" ChildrenAsTriggers="false">
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="btnSave" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="ddlHospitalID" />
+
 
         </Triggers>
         <ContentTemplate>
@@ -44,82 +46,29 @@
                             </div>
                         </div>
                         <div class="portlet-body form">
-                            <div role="form">
+                            <div class="form-horizontal" role="form">
                                 <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-4 text-start">
-                                            <label class=" control-label">
-                                                <span class="required">*</span>
-                                                <asp:Label ID="lblHospitalID_XXXXX" runat="server" Text="Hospital"></asp:Label>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4 text-start">
-                                            <label class=" control-label">
-                                                <span class="required">*</span>
-                                                <asp:Label ID="lblFinYearID_XXXXX" runat="server" Text="FinYear"></asp:Label>
-                                            </label>
-                                        </div>
-
-                                        <div class="col-md-4 text-start">
-                                            <label class=" control-label">
-                                                <span class="required">*</span>
-                                                <asp:Label ID="lblIncomeTypeID_XXXXX" runat="server" Text="Income Type"></asp:Label>
-                                            </label>
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">
                                     </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-plus"></i>
-                                                    </span>
-                                                    <asp:DropDownList ID="ddlHospitalID" CssClass="form-control select2me" runat="server"  AutoPostBack="True"  >
-                                                    </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="rfvHospitalID" Visible="true" SetFocusOnError="True" runat="server" Display="Dynamic" ControlToValidate="ddlHospitalID" ErrorMessage="Select Hospital" InitialValue="-99"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">
+                                            <span class="required">*</span>
+                                            <asp:Label ID="lblHospitalID_XXXXX" runat="server" Text="Hospital"></asp:Label>
+                                        </label>
+                                        <div class="col-md-5">
+                                            <asp:DropDownList ID="ddlHospitalID" CssClass="form-control select2me" runat="server"></asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvHospitalID" SetFocusOnError="True" runat="server" Display="Dynamic" ControlToValidate="ddlHospitalID" ErrorMessage="Select Hospital" InitialValue="-99"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-plus"></i>
-                                                    </span>
-                                                    <asp:DropDownList ID="ddlFinYearID" CssClass="form-control select2me" runat="server"  AutoPostBack="True"  >
-                                                    </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="rfvFinYearID" Visible="true" SetFocusOnError="True" runat="server" Display="Dynamic" ControlToValidate="ddlFinYearID" ErrorMessage="Select FinYear" InitialValue="-99"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-plus"></i>
-                                                    </span>
-                                                    <asp:DropDownList ID="ddlIncomeTypeID"  CssClass="form-control select2me" runat="server" AutoPostBack="True" >
-                                                    </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="rfvIncomeTypeID" Visible="true" SetFocusOnError="True" runat="server" Display="Dynamic" ControlToValidate="ddlIncomeTypeID" ErrorMessage="Select Income Type" InitialValue="-99"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-9">
                                             <asp:Button ID="btnShow" runat="server" SkinID="btnShow" OnClick="btnShow_Click" />
                                             <asp:HyperLink ID="hlCancel1" runat="server" SkinID="hlCancel" NavigateUrl="~/AdminPanel/Account/ACC_Income/ACC_IncomeList.aspx"></asp:HyperLink>
                                         </div>
                                     </div>
-
                                 </div>
+
                             </div>
-                    
-		
-               
-               
+                        </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
 
@@ -130,12 +79,12 @@
                 </Triggers>
                 <ContentTemplate>
                     <label>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ucMessage:ShowMessage ID="ShowMessage1" runat="server" ViewStateMode="Disabled" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ucMessage:ShowMessage ID="ShowMessage1" runat="server" ViewStateMode="Disabled" />
+                            </div>
                         </div>
-                    </div>
-                        </label>
+                    </label>
                     <div class="row">
                         <div class="col-md-12">
                             <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -152,69 +101,112 @@
                                 <div class="portlet-body">
                                     <div class="row" runat="server">
                                         <div class="col-md-12">
+
                                             <div id="TableContent">
-                                                <table class="table table-border ed table-advanced table-striped table-hover" id="sample_1">
+
+                                                <table class="table table-border    ed table-advanced table-striped table-hover" id="sample_1">
+
                                                     <%-- Table Header --%>
                                                     <thead>
+
                                                         <tr class="TRDark">
+
                                                             <th class="text-center" style="width: 20px;">
                                                                 <asp:Label ID="lblIsSelected" runat="server" Text="IsSelected"></asp:Label>
                                                             </th>
+
                                                             <th class="text-center" style="width: 20px;">
                                                                 <asp:Label ID="lbhSerialNo" runat="server" Text="Sr."></asp:Label>
                                                             </th>
+
                                                             <th>
-                                                                <asp:Label ID="lbhAmount" runat="server" Text="Amount"></asp:Label>
+                                                                <asp:Label ID="lbhFinYear" runat="server" Text="Fin Year"></asp:Label>
                                                             </th>
+
+                                                            <th>
+                                                                <asp:Label ID="lbhIncomeType" runat="server" Text="Income Type"></asp:Label>
+                                                            </th>
+
                                                             <th>
                                                                 <asp:Label ID="lbhIncomeDate" runat="server" Text="Income Date"></asp:Label>
                                                             </th>
+
+                                                            <th>
+                                                                <asp:Label ID="lbhAmount" runat="server" Text="Amount"></asp:Label>
+                                                            </th>
+
                                                             <th>
                                                                 <asp:Label ID="lbhNote" runat="server" Text="Note"></asp:Label>
                                                             </th>
 
                                                         </tr>
+
                                                     </thead>
                                                     <%-- END Table Header --%>
 
                                                     <tbody>
-                                                        <asp:Repeater ID="rpData" runat="server">
+
+                                                        <asp:Repeater ID="rpData" runat="server" OnItemDataBound="rpData_ItemDataBound">
+
                                                             <ItemTemplate>
+
                                                                 <%-- Table Rows --%>
                                                                 <tr class="odd gradeX">
+
                                                                     <td class="text-center">
-                                                                        <asp:CheckBox runat="server" ID="chkIsSelected" Checked='<%#Eval("Amount").ToString().Trim() == String.Empty ? false : true %>' />
+                                                                        <asp:CheckBox runat="server" ID="chkIsSelected" Checked='<%#Eval("IncomeID").ToString().Trim() == String.Empty ? false : true %>' />
+                                                                        <asp:HiddenField ID="hdIncomeID" runat="server" Value='<%#Eval("IncomeID") %>' />
                                                                     </td>
+
                                                                     <td class="text-center">
                                                                         <%#Container.ItemIndex+1 %>
                                                                     </td>
-                                                                    <td>
-                                                                        <asp:TextBox ID="txtAmount" CssClass="form-control" runat="server" Text='<%#Eval("Amount") %>' PlaceHolder="Enter Amount "></asp:TextBox>
-                                                                        <%--<asp:RequiredFieldValidator  ID="rfvAmount" SetFocusOnError="True" Display="Dynamic" runat="server" ControlToValidate="txtAmount" ErrorMessage="Enter Amount"></asp:RequiredFieldValidator>--%>
-                                                                        <asp:HiddenField ID="hdIncomeID" runat="server" Value='<%#Eval("IncomeID ") %>' />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ID="txtIncomeDate" CssClass="form-control" runat="server" Text='<%# Bind("IncomeDate", "{0:yyyy-MM-dd}") %>' PlaceHolder="Enter IncomeDate " type="Date"></asp:TextBox>
 
-                                                                        <%--<asp:RequiredFieldValidator  ID="rfvIncomeDate" SetFocusOnError="True" Display="Dynamic" runat="server" ControlToValidate="txtIncomeDate" ErrorMessage="Enter Amount"></asp:RequiredFieldValidator>--%>
-                                                                    </td>
                                                                     <td>
-                                                                        <asp:TextBox ID="txtNote" CssClass="form-control" runat="server" Text='<%#Eval("Note") %>' PlaceHolder="Enter Note "></asp:TextBox>
-                                                                        <%--<asp:RequiredFieldValidator  ID="rfvNote" SetFocusOnError="True" Display="Dynamic" runat="server" ControlToValidate="txtNote" ErrorMessage="Enter Amount"></asp:RequiredFieldValidator>--%>
+                                                                        <asp:DropDownList ID="ddlFinYearID" CssClass="form-control select2me" runat="server"></asp:DropDownList>
                                                                     </td>
+
+
+                                                                    <td>
+                                                                        <asp:DropDownList ID="ddlIncomeTypeID" CssClass="form-control select2me" runat="server"></asp:DropDownList>
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <div class="input-group input-medium date date-picker" data-date-format='<%=GNForm3C.CV.DefaultHTMLDateFormat.ToString()%>'>
+                                                                            <asp:TextBox ID="dtpIncomeDate" CssClass="form-control" runat="server" placeholder="Income Date" Text='<%#Eval("IncomeDate", "{0:dd-mm-yyyy}") %>'></asp:TextBox>
+                                                                            <span class="input-group-btn">
+                                                                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <asp:TextBox ID="txtAmount" CssClass="form-control" runat="server" onkeypress="return IsPositiveInteger(event)" PlaceHolder="Enter Amount" Text='<%#Eval("Amount") %>'></asp:TextBox>
+                                                                        <asp:CompareValidator ID="cvAmount" runat="server" ControlToValidate="txtAmount" ErrorMessage="Enter Valid Amount" SetFocusOnError="True" Operator="DataTypeCheck" Display="Dynamic" Type="Double"></asp:CompareValidator>
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <asp:TextBox ID="txtNote" CssClass="form-control" runat="server" TextMode="MultiLine" PlaceHolder="Enter Note" Text='<%#Eval("Note") %>'></asp:TextBox>
+                                                                    </td>
+
 
                                                                 </tr>
                                                                 <%-- END Table Rows --%>
                                                             </ItemTemplate>
+
                                                         </asp:Repeater>
+
                                                     </tbody>
+
                                                 </table>
+
                                             </div>
+
                                         </div>
                                         <div class="form-actions" runat="server">
                                             <div class="row">
                                                 <div class="col-md-offset-1 col-md-9">
-                                                    <asp:LinkButton ID="btnAdd" runat="server" OnClick="btnAdd_Click" SkinID="lbtnAddRow" Visible="true">
+                                                     <asp:LinkButton ID="btnAdd" runat="server" OnClick="btnAdd_Click" SkinID="lbtnAddRow" Visible="true">
                                                     </asp:LinkButton>
                                                     <asp:Button ID="btnSave" runat="server" SkinID="btnSave" OnClick="btnSave_Click" />
                                                     <asp:HyperLink ID="hlCancel" runat="server" SkinID="hlCancel" NavigateUrl="~/AdminPanel/Account/ACC_Income/ACC_IncomeList.aspx"></asp:HyperLink>
@@ -240,5 +232,5 @@
     </asp:UpdateProgress>
     <%-- END Loading  --%>
 </asp:Content>
-<%--<asp:Content ID="Content5" ContentPlaceHolderID="cphScripts" runat="Server">
-</asp:Content>--%>
+<asp:Content ID="Content5" ContentPlaceHolderID="cphScripts" runat="Server">
+</asp:Content>

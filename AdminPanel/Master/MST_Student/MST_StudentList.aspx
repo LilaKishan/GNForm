@@ -172,7 +172,8 @@
                             </div>
                             <div class="tools">
                                 <div>
-                                    <asp:HyperLink SkinID="hlAddNew" ID="hlAddNew" NavigateUrl="~/AdminPanel/Master/MST_Student/MST_StudentAddEdit.aspx" runat="server"></asp:HyperLink>
+                                   <%-- <asp:HyperLink SkinID="hlAddNew" ID="hlAddNew" NavigateUrl="~/AdminPanel/Master/MST_Student/MST_StudentAddEdit.aspx" runat="server"></asp:HyperLink>--%>
+                                     <asp:HyperLink SkinID="EditPopup" ID="hlAddNew" NavigateUrl="~/AdminPanel/Master/MST_Student/MST_StudentAddEditPopup.aspx"  data-target="#view" data-toggle="modal" runat="server"></asp:HyperLink>  
                                     <div class="btn-group" runat="server" id="Div_ExportOption" visible="false">
                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                             Export <i class="fa fa-angle-down"></i>
@@ -270,7 +271,8 @@
                                                             
                                                             <td class="text-nowrap text-center">
                                                                 <asp:HyperLink ID="hlView" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Master/MST_Student/MST_StudentView.aspx?StudentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("StudentID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>
-                                                                <asp:HyperLink ID="hlEdit" SkinID="Edit" NavigateUrl='<%# "~/AdminPanel/Master/MST_Student/MST_StudentAddEdit.aspx?StudentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("StudentID").ToString()) %>' runat="server"></asp:HyperLink>
+                                                               <%-- <asp:HyperLink ID="hlEdit" SkinID="Edit" NavigateUrl='<%# "~/AdminPanel/Master/MST_Student/MST_StudentAddEdit.aspx?StudentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("StudentID").ToString()) %>' runat="server"></asp:HyperLink>--%>
+                                                                <asp:HyperLink ID="hlEdit" SkinID="EditPopup" NavigateUrl='<%# "~/AdminPanel/Master/MST_Student/MST_StudentAddEditPopup.aspx?StudentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("StudentID").ToString()) %>' data-target="#view" data-toggle="modal" runat="server"></asp:HyperLink>
                                                                 <asp:LinkButton ID="lbtnDelete" runat="server"
                                                                     SkinID="Delete"
                                                                     OnClientClick="javascript:return confirm('Are you sure you want to delete record ? ');"

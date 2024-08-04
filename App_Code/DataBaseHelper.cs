@@ -11,7 +11,7 @@ namespace GNForm3C.DAL
     
     public class DataBaseHelper
     {
-        Int32 DefaultCommandTimeOutSecond = 360;
+        Int32 DefaultCommandTimeOutSecond = 180;
         public DataBaseHelper()
         {
 

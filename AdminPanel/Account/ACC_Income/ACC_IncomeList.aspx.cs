@@ -47,6 +47,11 @@ public partial class AdminPanel_ACC_Income_ACC_IncomeList : System.Web.UI.Page
             lblSearchResultHeader.Text = CV.SearchResultHeaderText;
             upr.DisplayAfter = CV.UpdateProgressDisplayAfter;
 
+            if (Request.QueryString["HospitalID"] != null)
+            {
+                ddlHospitalID.SelectedValue = CommonFunctions.DecryptBase64Int32(Request.QueryString["HospitalID"]).ToString();
+                ddlHospitalIDChanged();
+            }
             #endregion 12.2 Set Default Value
 
             Search(1);
@@ -422,6 +427,10 @@ public partial class AdminPanel_ACC_Income_ACC_IncomeList : System.Web.UI.Page
 
     #region 23.0 Fill Finyear Dropdown From Hopital
     protected void ddlHospitalID_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ddlHospitalIDChanged();
+    }
+    private void ddlHospitalIDChanged()
     {
         if (ddlHospitalID.SelectedIndex > 0)
         {

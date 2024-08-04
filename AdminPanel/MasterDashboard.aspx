@@ -366,6 +366,7 @@
                                 </asp:BoundField>
                                 <asp:BoundField DataField="PatientsCount" HeaderText="Patients Count">
                                     <HeaderStyle CssClass="TRDark" Font-Bold="true" HorizontalAlign="Center" />
+
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="IncomesAmount" HeaderText="Income Amount" DataFormatString="{0:C}">
@@ -380,6 +381,7 @@
             </asp:Panel>
         </ContentTemplate>
     </asp:UpdatePanel>
+ 
 
 </asp:Content>
 
