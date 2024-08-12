@@ -91,7 +91,7 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
     private void FillDropDownList()
     {
         CommonFillMethods.FillDropDownListHospitalID(ddlHospitalID);
-        CommonFillMethods.FillDropDownListFinYearID(ddlFinYearID);
+        CommonFillMethods.FillSingleDropDownListFinYearIDGNTransaction(ddlFinYearID);
         CommonFillMethods.FillDropDownListReceiptTypeID(ddlReceiptTypeID);
         CommonFillMethods.FillDropDownListPatientID(ddlPatientID);
 
@@ -292,7 +292,7 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
                     {
                         if (balACC_GNTransaction.Insert(entACC_GNTransaction))
                         {
-                            ucMessage.ShowSuccess(CommonMessage.RecordSaved());
+                            ucMessage.ShowSuccess(CommonMessage.RecordSaved("Transaction"));
                             ClearControls();
                             //ClearPatientControls();
 
@@ -324,7 +324,7 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
         {
             try
             {
-                ACC_GNTransactionBAL balACC_GNTransaction = new ACC_GNTransactionBAL();
+                MST_PatientBAL balMST_Patient = new MST_PatientBAL();
                 MST_PatientENT entMST_Patient = new MST_PatientENT();
 
                 #region 15.1 Validate Fields 
@@ -395,17 +395,16 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
                 {
                     if (Request.QueryString["PatientID"] == null || Request.QueryString["Copy"] != null)
                     {
-                        SqlInt32 InsertedPatientID = balACC_GNTransaction.InsertPatient(entMST_Patient);
+                        SqlInt32 InsertedPatientID = balMST_Patient.InsertPatient(entMST_Patient);
 
                         if (InsertedPatientID > 0)
                         {
-                            ucMessage.ShowSuccess(CommonMessage.RecordSaved());
+                            ucMessage.ShowSuccess(CommonMessage.RecordSaved("Patient"));
                             ClearPatientControls();
 
                             CommonFillMethods.FillDropDownListPatientID(ddlPatientID);
                             ddlPatientID.SelectedValue = InsertedPatientID.ToString();
-
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "MasterPageView", "toggleAddPatientForm()", true);
+                            ucPatient.ShowPatient(Convert.ToInt32(InsertedPatientID.ToString()));
 
                         }
                     }
@@ -419,11 +418,9 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
                 ucMessage.ShowError(ex.Message);
 
             }
+
+
         }
-
-
-
-
     }
     #endregion  15.2 Save Patient
 
@@ -482,6 +479,17 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
 
     }
     #endregion 17.0 FillTreatmentCombobox
+    protected void FillPatientView(object sender, EventArgs e)
+    {
+        int PatientID = 0;
 
 
+        if (int.TryParse(ddlPatientID.SelectedValue, out PatientID))
+        {
+            if (PatientID > 0)
+            {
+                ucPatient.ShowPatient(PatientID);
+            }
+        }
+    }
 }

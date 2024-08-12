@@ -91,51 +91,51 @@ namespace GNForm3C.DAL
             }
         }
 
-        public SqlInt32 InsertPatient(MST_PatientENTBase entMST_Patient)
-        {
-            SqlInt32 PatientID = -1;
+        //public SqlInt32 InsertPatient(MST_PatientENTBase entMST_Patient)
+        //{
+        //    SqlInt32 PatientID = -1;
 
-            try
-            {
-                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_MST_Patient_Insert");
+        //    try
+        //    {
+        //        SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+        //        DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_MST_Patient_Insert");
 
-                sqlDB.AddOutParameter(dbCMD, "@PatientID", SqlDbType.Int, 4);
-                sqlDB.AddInParameter(dbCMD, "@PatientName", SqlDbType.NVarChar, entMST_Patient.PatientName);
-                sqlDB.AddInParameter(dbCMD, "@Age", SqlDbType.Int, entMST_Patient.Age);
-                sqlDB.AddInParameter(dbCMD, "@MobileNo", SqlDbType.NVarChar, entMST_Patient.MobileNo);
-                sqlDB.AddInParameter(dbCMD, "@DOB", SqlDbType.DateTime, entMST_Patient.DOB);
-                sqlDB.AddInParameter(dbCMD, "@PrimaryDesc", SqlDbType.NVarChar, entMST_Patient.PrimaryDesc);
-                sqlDB.AddInParameter(dbCMD, "@UserID", SqlDbType.Int, entMST_Patient.UserID);
-                sqlDB.AddInParameter(dbCMD, "@Created", SqlDbType.DateTime, entMST_Patient.Created);
-                sqlDB.AddInParameter(dbCMD, "@Modified", SqlDbType.DateTime, entMST_Patient.Modified);
+        //        sqlDB.AddOutParameter(dbCMD, "@PatientID", SqlDbType.Int, 4);
+        //        sqlDB.AddInParameter(dbCMD, "@PatientName", SqlDbType.NVarChar, entMST_Patient.PatientName);
+        //        sqlDB.AddInParameter(dbCMD, "@Age", SqlDbType.Int, entMST_Patient.Age);
+        //        sqlDB.AddInParameter(dbCMD, "@MobileNo", SqlDbType.NVarChar, entMST_Patient.MobileNo);
+        //        sqlDB.AddInParameter(dbCMD, "@DOB", SqlDbType.DateTime, entMST_Patient.DOB);
+        //        sqlDB.AddInParameter(dbCMD, "@PrimaryDesc", SqlDbType.NVarChar, entMST_Patient.PrimaryDesc);
+        //        sqlDB.AddInParameter(dbCMD, "@UserID", SqlDbType.Int, entMST_Patient.UserID);
+        //        sqlDB.AddInParameter(dbCMD, "@Created", SqlDbType.DateTime, entMST_Patient.Created);
+        //        sqlDB.AddInParameter(dbCMD, "@Modified", SqlDbType.DateTime, entMST_Patient.Modified);
 
-                DataBaseHelper DBH = new DataBaseHelper();
-                DBH.ExecuteNonQuery(sqlDB, dbCMD);
+        //        DataBaseHelper DBH = new DataBaseHelper();
+        //        DBH.ExecuteNonQuery(sqlDB, dbCMD);
 
-                if (!(dbCMD.Parameters["@PatientID"].Value).Equals(DBNull.Value))
-                {
-                    entMST_Patient.PatientID = (SqlInt32)Convert.ToInt32(dbCMD.Parameters["@PatientID"].Value);
-                    PatientID = entMST_Patient.PatientID;
-                }
+        //        if (!(dbCMD.Parameters["@PatientID"].Value).Equals(DBNull.Value))
+        //        {
+        //            entMST_Patient.PatientID = (SqlInt32)Convert.ToInt32(dbCMD.Parameters["@PatientID"].Value);
+        //            PatientID = entMST_Patient.PatientID;
+        //        }
 
-                return PatientID;
-            }
-            catch (SqlException sqlex)
-            {
-                Message = SQLDataExceptionMessage(sqlex);
-                if (SQLDataExceptionHandler(sqlex))
-                    throw;
-                return PatientID;
-            }
-            catch (Exception ex)
-            {
-                Message = ExceptionMessage(ex);
-                if (ExceptionHandler(ex))
-                    throw;
-                return PatientID;
-            }
-        }
+        //        return PatientID;
+        //    }
+        //    catch (SqlException sqlex)
+        //    {
+        //        Message = SQLDataExceptionMessage(sqlex);
+        //        if (SQLDataExceptionHandler(sqlex))
+        //            throw;
+        //        return PatientID;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Message = ExceptionMessage(ex);
+        //        if (ExceptionHandler(ex))
+        //            throw;
+        //        return PatientID;
+        //    }
+        //}
 
         #endregion InsertOperation
 
@@ -427,25 +427,7 @@ namespace GNForm3C.DAL
                 return null;
             }
         }
-        public DataTable SelectPage(
-    SqlInt32 PageOffset,
-    SqlInt32 PageSize,
-    out Int32 TotalRecords,
-    SqlInt32 PatientID,
-    SqlDecimal Amount,
-    SqlString ReferenceDoctor,
-    SqlInt32 Count,
-    SqlInt32 ReceiptNo,
-    SqlDateTime Date,
-    SqlDateTime DateOfAdmission,
-    SqlDateTime DateOfDischarge,
-    SqlDecimal Deposite,
-    SqlDecimal NetAmount,
-    SqlInt32 NoOfDays,
-    SqlInt32 HospitalID,
-    SqlInt32 FinYearID,
-    SqlInt32 ReceiptTypeID
-)
+        public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords, SqlInt32 PatientID, SqlDecimal Amount, SqlString ReferenceDoctor, SqlInt32 Count, SqlInt32 ReceiptNo, SqlDateTime Date, SqlDateTime DateOfAdmission, SqlDateTime DateOfDischarge, SqlDecimal Deposite, SqlDecimal NetAmount, SqlInt32 NoOfDays, SqlInt32 HospitalID, SqlInt32 FinYearID, SqlInt32 ReceiptTypeID)
         {
             TotalRecords = 0;
             try
@@ -502,6 +484,7 @@ namespace GNForm3C.DAL
         #endregion SelectOperation
 
         #region SelectCombobox
+
         #region ComboBox
 
         public DataTable SelectComboBox()
@@ -535,11 +518,8 @@ namespace GNForm3C.DAL
         }
 
         #endregion ComboBox
-        #endregion
 
-
-
-
+        #endregion 
 
     }
 }

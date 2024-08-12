@@ -19,7 +19,7 @@
         <i class="fa fa-angle-right"></i>
     </li>
     <li class="active">
-        <asp:Label ID="lblBreadCrumbLast" runat="server" Text="Transaction"></asp:Label>
+        <asp:Label ID="lblBreadCrumbLast" runat="server" Text="GNTransaction"></asp:Label>
     </li>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphPageContent" runat="Server">
@@ -394,6 +394,7 @@
                                                             <td class="text-nowrap text-center">
                                                                 <asp:HyperLink ID="hlView" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Account/ACC_GNTransaction/ACC_GNTransactionView.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>
                                                                 <asp:HyperLink ID="hlEdit" SkinID="Edit" NavigateUrl='<%# "~/AdminPanel/Account/ACC_Transaction/ACC_TransactionAddEdit.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' runat="server"></asp:HyperLink>
+                                                                <%--<asp:HyperLink ID="HyperLink1" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Master/MST_Patient/MST_PatientView.aspx?PatientID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("PatientID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>--%>
                                                                 <%--<asp:LinkButton ID="lbtnDelete" runat="server"
                                                                     SkinID="Delete"
                                                                     OnClientClick="javascript:return confirm('Are you sure you want to delete record ? ');"
@@ -406,7 +407,7 @@
                                                                     CommandName="Discharge"
                                                                     CommandArgument='<%# Eval("TransactionID") %>'
                                                                     Enabled='<%# Eval("DateOfDischarge") == DBNull.Value ? true : false %>'>
-  </asp:LinkButton>
+                                                                </asp:LinkButton>
                                                             </td>
                                                         </tr>
                                                         <%-- END Table Rows --%>

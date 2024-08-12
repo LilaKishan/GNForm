@@ -14,7 +14,7 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransaction : Sy
 {
     #region 11.0 Variables
 
-    String FormName = "ACC_NTransactionList";
+    String FormName = "ACC_GNTransactionList";
     static Int32 PageRecordSize = CV.PageRecordSize;//Size of record per page
     Int32 PageDisplaySize = CV.PageDisplaySize;
     Int32 DisplayIndex = CV.DisplayIndex;
@@ -529,7 +529,7 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransaction : Sy
 
     #region 16.1 Item Command Event
 
-  
+
     #endregion 16.1 Item Command Event    
 
     #endregion 16.0 Repeater Events
