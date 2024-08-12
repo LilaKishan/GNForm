@@ -340,14 +340,45 @@ namespace GNForm3C.DAL
 					throw;
 				return null;
 			}
+
 		}
+        public DataTable SelectComboBoxByHospitalID(SqlInt32 HospitalID)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_MST_Treatment_SelectComboBoxByHospitalID");
+                sqlDB.AddInParameter(dbCMD, "@HospitalID", SqlDbType.Int, HospitalID);
 
-		#endregion ComboBox
+                DataTable dtMST_Treatment = new DataTable("PR_MST_Treatment_SelectComboBoxByHospitalID");
 
-		#region AutoComplete
+                DataBaseHelper DBH = new DataBaseHelper();
+                DBH.LoadDataTable(sqlDB, dbCMD, dtMST_Treatment);
+
+                return dtMST_Treatment;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return null;
+            }
+        }
+
+        #endregion ComboBox
+
+        #region AutoComplete
 
 
-		#endregion AutoComplete
+        #endregion AutoComplete
 
-	}
+    }
 }

@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AdminPanel_MasterDashboard : System.Web.UI.Page
+public partial class AdminPanel_MasterDashboard_MasterDashboard : System.Web.UI.Page
 {
     #region 10.0 Local Variables
     decimal EtotalJan = 0;

@@ -340,49 +340,62 @@ namespace GNForm3C.DAL
 				return null;
 			}
 		}
-        public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords, SqlString Patient, SqlInt32 TreatmentID)
-		{
-			TotalRecords = 0;
-			try
-			{
-				SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-				DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_ACC_Transaction_SelectPage");
-				sqlDB.AddInParameter(dbCMD, "@PageOffset", SqlDbType.Int, PageOffset);
-				sqlDB.AddInParameter(dbCMD, "@PageSize", SqlDbType.Int, PageSize);
-				sqlDB.AddOutParameter(dbCMD, "@TotalRecords", SqlDbType.Int, 4);
+        public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords, SqlString Patient, SqlInt32 TreatmentID, SqlDecimal Amount, SqlInt32 SerialNo, SqlString ReferenceDoctor, SqlInt32 Count, SqlInt32 ReceiptNo, SqlDateTime Date, SqlDateTime DateOfAdmission, SqlDateTime DateOfDischarge, SqlDecimal Deposite, SqlDecimal NetAmount, SqlInt32 NoOfDays, SqlInt32 HospitalID, SqlInt32 FinYearID, SqlInt32 ReceiptTypeID)
+        {
+            TotalRecords = 0;
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_ACC_Transaction_SelectPage");
+                sqlDB.AddInParameter(dbCMD, "@PageOffset", SqlDbType.Int, PageOffset);
+                sqlDB.AddInParameter(dbCMD, "@PageSize", SqlDbType.Int, PageSize);
+                sqlDB.AddOutParameter(dbCMD, "@TotalRecords", SqlDbType.Int, 4);
                 sqlDB.AddInParameter(dbCMD, "@Patient", SqlDbType.VarChar, Patient);
                 sqlDB.AddInParameter(dbCMD, "@TreatmentID", SqlDbType.Int, TreatmentID);
+                sqlDB.AddInParameter(dbCMD, "@Amount", SqlDbType.Decimal, Amount);
+                sqlDB.AddInParameter(dbCMD, "@SerialNo", SqlDbType.Int, SerialNo);
+                sqlDB.AddInParameter(dbCMD, "@ReferenceDoctor", SqlDbType.VarChar, ReferenceDoctor);
+                sqlDB.AddInParameter(dbCMD, "@Count", SqlDbType.Int, Count);
+                sqlDB.AddInParameter(dbCMD, "@ReceiptNo", SqlDbType.Int, ReceiptNo);
+                sqlDB.AddInParameter(dbCMD, "@Date", SqlDbType.DateTime, Date);
+                sqlDB.AddInParameter(dbCMD, "@DateOfAdmission", SqlDbType.DateTime, DateOfAdmission);
+                sqlDB.AddInParameter(dbCMD, "@DateOfDischarge", SqlDbType.DateTime, DateOfDischarge);
+                sqlDB.AddInParameter(dbCMD, "@Deposite", SqlDbType.Decimal, Deposite);
+                sqlDB.AddInParameter(dbCMD, "@NetAmount", SqlDbType.Decimal, NetAmount);
+                sqlDB.AddInParameter(dbCMD, "@NoOfDays", SqlDbType.Int, NoOfDays);
+                sqlDB.AddInParameter(dbCMD, "@HospitalID", SqlDbType.Int, HospitalID);
+                sqlDB.AddInParameter(dbCMD, "@FinYearID", SqlDbType.Int, FinYearID);
+                sqlDB.AddInParameter(dbCMD, "@ReceiptTypeID", SqlDbType.Int, ReceiptTypeID);
 
-				DataTable dtACC_Transaction = new DataTable("PR_ACC_Transaction_SelectPage");
+                DataTable dtACC_Transaction = new DataTable("PR_ACC_Transaction_SelectPage");
 
-				DataBaseHelper DBH = new DataBaseHelper();
-				DBH.LoadDataTable(sqlDB, dbCMD, dtACC_Transaction);
+                DataBaseHelper DBH = new DataBaseHelper();
+                DBH.LoadDataTable(sqlDB, dbCMD, dtACC_Transaction);
 
-				TotalRecords = Convert.ToInt32(dbCMD.Parameters["@TotalRecords"].Value);
+                TotalRecords = Convert.ToInt32(dbCMD.Parameters["@TotalRecords"].Value);
 
-				return dtACC_Transaction;
-			}
-			catch (SqlException sqlex)
-			{
-				Message = SQLDataExceptionMessage(sqlex);
-				if (SQLDataExceptionHandler(sqlex))
-					throw;
-				return null;
-			}
-			catch (Exception ex)
-			{
-				Message = ExceptionMessage(ex);
-				if (ExceptionHandler(ex))
-					throw;
-				return null;
-			}
-		}
+                return dtACC_Transaction;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return null;
+            }
+        }
+        #endregion SelectOperation
 
-		#endregion SelectOperation
+        #region ComboBox
 
-		#region ComboBox
-
-		public DataTable SelectComboBox()
+        public DataTable SelectComboBox()
 		{
 			try
 			{

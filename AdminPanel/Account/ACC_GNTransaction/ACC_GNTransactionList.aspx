@@ -1,18 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default/MasterPage.master" AutoEventWireup="true" CodeFile="MST_StudentList.aspx.cs" Inherits="AdminPanel_Master_MST_Student_MST_StudentList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default/MasterPage.master" AutoEventWireup="true" CodeFile="ACC_GNTransactionList.aspx.cs" Inherits="AdminPanel_Account_ACC_GNTransaction_ACC_GNTransaction" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphPageHeader" runat="Server">
-    <asp:Label ID="lblPageHeader_XXXXX" runat="server" Text=" Student "></asp:Label>
+    <asp:Label ID="lblPageHeader_XXXXX" runat="server" Text="Transaction"></asp:Label>
     <small>
-        <asp:Label ID="lblPageHeaderInfo_XXXXX" runat="server" Text="Master"></asp:Label></small>
+        <asp:Label ID="lblPageHeaderInfo_XXXXX" runat="server" Text="Account"></asp:Label></small>
     <span class="pull-right">
         <small>
             <asp:HyperLink ID="hlShowHelp" SkinID="hlShowHelp" runat="server"></asp:HyperLink>
         </small>
     </span>
 </asp:Content>
-
 <asp:Content ID="Content3" ContentPlaceHolderID="cphBreadcrumb" runat="Server">
     <li>
         <i class="fa fa-home"></i>
@@ -20,10 +19,9 @@
         <i class="fa fa-angle-right"></i>
     </li>
     <li class="active">
-        <asp:Label ID="lblBreadCrumbLast" runat="server" Text="Student"></asp:Label>
+        <asp:Label ID="lblBreadCrumbLast" runat="server" Text="Transaction"></asp:Label>
     </li>
 </asp:Content>
-
 <asp:Content ID="Content4" ContentPlaceHolderID="cphPageContent" runat="Server">
     <!--Help Text-->
     <ucHelp:ShowHelp ID="ucHelp" runat="server" />
@@ -54,7 +52,60 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-search"></i>
                                             </span>
-                                            <asp:TextBox ID="txtStudentName" CssClass="First form-control" runat="server" PlaceHolder="Enter Student Name"></asp:TextBox>
+                                            <asp:DropDownList ID="ddlPatientID" CssClass="form-control select2me" runat="server"></asp:DropDownList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%--	<div class="col-md-4">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-search"></i>
+											</span>
+									       	<asp:DropDownList ID="ddlTreatmentID" CssClass="form-control select2me" runat="server"></asp:DropDownList>
+										</div>
+									</div>
+								</div>--%>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                            <asp:DropDownList ID="ddlReceiptTypeID" CssClass="form-control select2me" runat="server"></asp:DropDownList>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                            <asp:DropDownList ID="ddlFinYearID" CssClass="form-control select2me" runat="server"></asp:DropDownList>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <%--	<div class="col-md-4">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-search"></i>
+											</span>
+											<asp:TextBox ID="txtSerialNo" CssClass="form-control" runat="server"  PlaceHolder="Enter Serial No"></asp:TextBox>
+										</div>
+									</div>
+								</div>--%>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                            <asp:DropDownList ID="ddlHospitalID" CssClass="form-control select2me" runat="server"></asp:DropDownList>
                                         </div>
                                     </div>
                                 </div>
@@ -64,7 +115,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-search"></i>
                                             </span>
-                                            <asp:TextBox ID="txtEnrollmentNo" CssClass="First form-control" runat="server" PlaceHolder="Enter EnrollmentNo"></asp:TextBox>
+                                            <asp:TextBox ID="txtCount" CssClass="form-control" runat="server" PlaceHolder="Enter Count"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +125,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-search"></i>
                                             </span>
-                                            <asp:DropDownList ID="ddlCurrentSem" CssClass="form-control select2me" runat="server"></asp:DropDownList>
+                                            <asp:TextBox ID="txtAmount" CssClass="form-control" runat="server" PlaceHolder="Enter Amount"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +137,39 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-search"></i>
                                             </span>
-                                            <asp:TextBox ID="txtEmailInstitute" CssClass="First form-control" runat="server" PlaceHolder="Enter Institute Email"></asp:TextBox>
+                                            <asp:TextBox ID="txtReceiptNo" CssClass="form-control" runat="server" PlaceHolder="Enter Receipt No"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                            <asp:TextBox ID="dtpDate" CssClass="form-control" runat="server" placeholder="Date"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                            <asp:TextBox ID="dtpDateOfAdmission" CssClass="form-control" runat="server" placeholder="Date Of Admission"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                            <asp:TextBox ID="dtpDateOfDischarge" CssClass="form-control" runat="server" placeholder="Date Of Discharge"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +179,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-search"></i>
                                             </span>
-                                            <asp:TextBox ID="txtEmailPersnol" CssClass="First form-control" runat="server" PlaceHolder="Enter Persnol Email"></asp:TextBox>
+                                            <asp:TextBox ID="txtDeposite" CssClass="form-control" runat="server" PlaceHolder="Enter Deposite"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +189,7 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-search"></i>
                                             </span>
-                                            <asp:DropDownList ID="ddlGender" CssClass="form-control select2me" runat="server"></asp:DropDownList>
+                                            <asp:TextBox ID="txtNetAmount" CssClass="form-control" runat="server" PlaceHolder="Enter Net Amount"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -118,21 +201,26 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-search"></i>
                                             </span>
-                                            <asp:TextBox ID="txtRollNo" CssClass="First form-control" runat="server" PlaceHolder="Enter RollNo"></asp:TextBox>
+                                            <asp:TextBox ID="txtNoOfDays" CssClass="form-control" runat="server" PlaceHolder="Enter No Of Days"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-search"></i>
                                             </span>
-                                            <asp:TextBox ID="txtContactNo" CssClass="First form-control" runat="server" PlaceHolder="Enter ContactNo"></asp:TextBox>
+                                            <asp:TextBox ID="txtReferenceDoctor" CssClass="form-control" runat="server" PlaceHolder="Enter Reference Doctor"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+                            <%--<div class="row">
+							
+							</div>--%>
                         </div>
                         <div class="form-actions">
                             <div class="row">
@@ -172,8 +260,7 @@
                             </div>
                             <div class="tools">
                                 <div>
-                                   <%-- <asp:HyperLink SkinID="hlAddNew" ID="hlAddNew" NavigateUrl="~/AdminPanel/Master/MST_Student/MST_StudentAddEdit.aspx" runat="server"></asp:HyperLink>--%>
-                                     <asp:HyperLink SkinID="EditPopup" ID="hlAddNew" NavigateUrl="~/AdminPanel/Master/MST_Student/MST_StudentAddEditPopup.aspx"  data-target="#view" data-toggle="modal" runat="server"></asp:HyperLink>  
+                                    <asp:HyperLink SkinID="hlAddNew" ID="hlAddNew" NavigateUrl="~/AdminPanel/Account/ACC_GNTransaction/ACC_GNTransactionAddEdit.aspx" runat="server"></asp:HyperLink>
                                     <div class="btn-group" runat="server" id="Div_ExportOption" visible="false">
                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                             Export <i class="fa fa-angle-down"></i>
@@ -199,35 +286,51 @@
                                             <thead>
                                                 <tr class="TRDark">
                                                     <th>
-                                                        <asp:Label ID="lbhStudentName" runat="server" Text="Student Name"></asp:Label>
+                                                        <asp:Label ID="lbhPatient" runat="server" Text="Patient"></asp:Label>
+                                                    </th>
+                                                    <%--   <th><asp:Label ID="lbhTreatmentID" runat="server" Text="Treatment"></asp:Label>
+                                                    </th>--%>
+                                                    <th>
+                                                        <asp:Label ID="lbhAmount" runat="server" Text="Amount"></asp:Label>
+                                                    </th>
+                                                    <%-- <th><asp:Label ID="lbhSerialNo" runat="server" Text="Serial No"></asp:Label>
+                                                    </th>--%>
+                                                    <th>
+                                                        <asp:Label ID="lbhReferenceDoctor" runat="server" Text="Reference Doctor"></asp:Label>
                                                     </th>
                                                     <th>
-                                                        <asp:Label ID="lbhEnrollmentNo" runat="server" Text="EnrollmentNo"></asp:Label>
+                                                        <asp:Label ID="lbhCount" runat="server" Text="Count"></asp:Label>
                                                     </th>
                                                     <th>
-                                                        <asp:Label ID="lbhRollNo" runat="server" Text="RollNo"></asp:Label>
+                                                        <asp:Label ID="lbhReceiptNo" runat="server" Text="Receipt No"></asp:Label>
                                                     </th>
-
-                                                    <th>
-                                                        <asp:Label ID="lbhCurrentSem" runat="server" Text="Current sem"></asp:Label>
-                                                    </th>
-                                                    <th>
-                                                        <asp:Label ID="lbhEmailInstitute" runat="server" Text=" Institute Email"></asp:Label>
+                                                    <th class="text-center">
+                                                        <asp:Label ID="lbhDate" runat="server" Text="Date"></asp:Label>
                                                     </th>
                                                     <th>
-                                                        <asp:Label ID="lbhEmailPersonal" runat="server" Text="Persnol Email"></asp:Label>
+                                                        <asp:Label ID="lbhDateOfAdmission" runat="server" Text="Date Of Admission"></asp:Label>
                                                     </th>
                                                     <th>
-                                                        <asp:Label ID="lbhBirthDate" runat="server" Text="BirthDate"></asp:Label>
+                                                        <asp:Label ID="lbhDateOfDischarge" runat="server" Text="Date Of Discharge"></asp:Label>
                                                     </th>
                                                     <th>
-                                                        <asp:Label ID="lbhContactNo" runat="server" Text="ContactNo"></asp:Label>
+                                                        <asp:Label ID="lbhDeposite" runat="server" Text="Deposite"></asp:Label>
                                                     </th>
                                                     <th>
-                                                        <asp:Label ID="lbhGender" runat="server" Text="Gender"></asp:Label>
+                                                        <asp:Label ID="lbhNetAmount" runat="server" Text="Net Amount"></asp:Label>
                                                     </th>
-                                                   
-
+                                                    <th>
+                                                        <asp:Label ID="lbhNoOfDays" runat="server" Text="No Of Days"></asp:Label>
+                                                    </th>
+                                                    <th>
+                                                        <asp:Label ID="lbhHospitalID" runat="server" Text="Hospital"></asp:Label>
+                                                    </th>
+                                                    <th>
+                                                        <asp:Label ID="lbhFinYearID" runat="server" Text="Fin Year"></asp:Label>
+                                                    </th>
+                                                    <th>
+                                                        <asp:Label ID="lbhReceiptTypeID" runat="server" Text="Receipt Type"></asp:Label>
+                                                    </th>
                                                     <th class="nosortsearch text-nowrap text-center">
                                                         <asp:Label ID="lbhAction" runat="server" Text="Action"></asp:Label>
                                                     </th>
@@ -241,44 +344,69 @@
                                                         <%-- Table Rows --%>
                                                         <tr class="odd gradeX">
                                                             <td>
-                                                                <asp:HyperLink ID="hlViewStudentID" NavigateUrl='<%# "~/AdminPanel/Master/MST_Student/MST_StudentView.aspx?StudentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("StudentID").ToString()) %>' data-target="#view" CssClass="modalButton" data-toggle="modal" runat="server"><%#Eval("StudentName") %></asp:HyperLink>
+                                                                <asp:HyperLink ID="hlViewTransactionID" NavigateUrl='<%# "~/AdminPanel/Account/ACC_GNTransaction/ACC_GNTransactionView.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' data-target="#viewiFrameReg" CssClass="modalButton" data-toggle="modal" runat="server"><%#Eval("PatientName") %></asp:HyperLink>
                                                             </td>
-                                                            
+                                                            <%-- <td>
+                                                            	<%#Eval("Treatment") %>
+                                                            </td>--%>
                                                             <td>
-                                                                <%#Eval("EnrollmentNo") %>
+                                                                <%#Eval("Amount",GNForm3C.CV.DefaultCurrencyFormatWithOutDecimalPoint) %>
                                                             </td>
+                                                            <%--  <td>
+                                                            	<%#Eval("SerialNo") %>
+                                                            </td>--%>
                                                             <td>
-                                                                <%#Eval("RollNo") %>
-                                                            </td>
-                                                            <td>
-                                                                <%#Eval("CurrentSem") %>
-                                                            </td>
-                                                            <td>
-                                                                <%#Eval("EmailInstitute") %>
-                                                            </td>
-                                                            <td>
-                                                                <%#Eval("EmailPersonal") %>
+                                                                <%#Eval("ReferenceDoctor") %>
                                                             </td>
                                                             <td>
-                                                                <%#Eval("BirthDate") %>
+                                                                <%#Eval("Count") %>
                                                             </td>
                                                             <td>
-                                                                <%#Eval("ContactNo") %>
+                                                                <%#Eval("ReceiptNo") %>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <%#Eval("Date", GNForm3C.CV.DefaultDateFormatForGrid) %>
                                                             </td>
                                                             <td>
-                                                                <%#Eval("Gender") %>
+                                                                <%#Eval("DateOfAdmission") %>
                                                             </td>
-                                                            
+                                                            <td>
+                                                                <%#Eval("DateOfDischarge") %>
+                                                            </td>
+                                                            <td>
+                                                                <%#Eval("Deposite") %>
+                                                            </td>
+                                                            <td>
+                                                                <%#Eval("NetAmount",GNForm3C.CV.DefaultCurrencyFormatWithOutDecimalPoint) %>
+                                                            </td>
+                                                            <td>
+                                                                <%#Eval("NoOfDays") %>
+                                                            </td>
+                                                            <td>
+                                                                <%#Eval("Hospital") %>
+                                                            </td>
+                                                            <td>
+                                                                <%#Eval("FinYearName") %>
+                                                            </td>
+                                                            <td>
+                                                                <%#Eval("ReceiptTypeName") %>
+                                                            </td>
                                                             <td class="text-nowrap text-center">
-                                                                <asp:HyperLink ID="hlView" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Master/MST_Student/MST_StudentView.aspx?StudentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("StudentID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>
-                                                               <%-- <asp:HyperLink ID="hlEdit" SkinID="Edit" NavigateUrl='<%# "~/AdminPanel/Master/MST_Student/MST_StudentAddEdit.aspx?StudentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("StudentID").ToString()) %>' runat="server"></asp:HyperLink>--%>
-                                                                <asp:HyperLink ID="hlEdit" SkinID="EditPopup" NavigateUrl='<%# "~/AdminPanel/Master/MST_Student/MST_StudentAddEditPopup.aspx?StudentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("StudentID").ToString()) %>' data-target="#view" data-toggle="modal" runat="server"></asp:HyperLink>
-                                                                <asp:LinkButton ID="lbtnDelete" runat="server"
+                                                                <asp:HyperLink ID="hlView" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Account/ACC_GNTransaction/ACC_GNTransactionView.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>
+                                                                <asp:HyperLink ID="hlEdit" SkinID="Edit" NavigateUrl='<%# "~/AdminPanel/Account/ACC_Transaction/ACC_TransactionAddEdit.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' runat="server"></asp:HyperLink>
+                                                                <%--<asp:LinkButton ID="lbtnDelete" runat="server"
                                                                     SkinID="Delete"
                                                                     OnClientClick="javascript:return confirm('Are you sure you want to delete record ? ');"
                                                                     CommandName="DeleteRecord"
-                                                                    CommandArgument='<%#Eval("StudentID") %>'>
-                                                                </asp:LinkButton>
+                                                                    CommandArgument='<%#Eval("TransactionID") %>'>
+                                                                </asp:LinkButton>--%>
+                                                                <asp:LinkButton ID="LinkButton1" runat="server"
+                                                                    SkinID="Delete"
+                                                                    OnClientClick="javascript:return confirm('Are you sure you want to Discharge?');"
+                                                                    CommandName="Discharge"
+                                                                    CommandArgument='<%# Eval("TransactionID") %>'
+                                                                    Enabled='<%# Eval("DateOfDischarge") == DBNull.Value ? true : false %>'>
+  </asp:LinkButton>
                                                             </td>
                                                         </tr>
                                                         <%-- END Table Rows --%>
@@ -359,7 +487,6 @@
     </asp:UpdateProgress>
     <%-- END Loading  --%>
 </asp:Content>
-
 <asp:Content ID="Content5" ContentPlaceHolderID="cphScripts" runat="Server">
     <script>
 

@@ -37,8 +37,6 @@ namespace GNForm3C
         public static string EncryptPassword(String Password)
         {
             return Password;
-            
-
 
         }
 
@@ -271,6 +269,19 @@ namespace GNForm3C
         }
 
         #endregion Function For Paging In List Page
+
+        #region Column of DataTable
+        public static List<String> ColumnOfDataTable(DataTable dt)
+        {
+            var columnNames = new List<string>();
+            foreach (DataColumn column in dt.Columns)
+            {
+                columnNames.Add(column.ColumnName);
+            }
+
+            return columnNames;
+        }
+        #endregion Column of DataTable
 
         #region Other
         public static System.Drawing.Image ByteArrayToImage(byte[] bArray)

@@ -128,9 +128,13 @@ namespace GNForm3C.BAL
 			MST_TreatmentDAL dalMST_Treatment = new MST_TreatmentDAL();
 			return dalMST_Treatment.SelectComboBox();
 		}
+        public DataTable SelectComboBoxByHospitalID(SqlInt32 HospitalID)
+        {
+            MST_TreatmentDAL dalMST_Treatment = new MST_TreatmentDAL();
+            return dalMST_Treatment.SelectComboBoxByHospitalID(HospitalID);
+        }
+        #endregion ComboBox
 
-		#endregion ComboBox
-
-	}
+    }
 
 }

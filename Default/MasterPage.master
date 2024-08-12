@@ -280,9 +280,15 @@
                                         </a>
                                     </li>
                                     <li class="nav-item start ">
-                                        <a href='<%=ResolveClientUrl("~/AdminPanel/MasterDashboard.aspx") %>' class="kt-menu__link ">
+                                        <a href='<%=ResolveClientUrl("~/AdminPanel/MasterDashboard/MasterDashboard.aspx") %>' class="kt-menu__link ">
                                             <i class="kt-menu__link-icon flaticon2-architecture-and-city"></i>
                                             <span class="kt-menu__link-text">Hospital Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item start ">
+                                        <a href='<%=ResolveClientUrl("~/AdminPanel/MasterDashboard/MasterDashboard2.aspx") %>' class="kt-menu__link ">
+                                            <i class="kt-menu__link-icon flaticon2-architecture-and-city"></i>
+                                            <span class="kt-menu__link-text">FinYear Dashboard</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -337,6 +343,11 @@
                                             <span class="title">Student</span>
                                         </a>
                                     </li>
+                                    <li class="nav-item  ">
+                                        <a href='<%=ResolveClientUrl("~/AdminPanel/Master/MST_BranchIntake/MST_BranchIntake.aspx") %>' class="nav-link ">
+                                            <span class="title">Branch Intake</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -369,6 +380,11 @@
                                     <li class="nav-item  ">
                                         <a href='<%=ResolveClientUrl("~/AdminPanel/Account/ACC_TransactionTran/ACC_TransactionTranList.aspx") %>' class="nav-link ">
                                             <span class="title">Account TransactionTran</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a href='<%=ResolveClientUrl("~/AdminPanel/Account/ACC_GNTransaction/ACC_GNTransactionList.aspx") %>' class="nav-link ">
+                                            <span class="title">Account GNTransaction</span>
                                         </a>
                                     </li>
                                 </ul>

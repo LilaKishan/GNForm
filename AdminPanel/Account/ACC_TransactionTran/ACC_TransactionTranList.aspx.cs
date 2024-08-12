@@ -141,7 +141,7 @@ public partial class AdminPanel_ACC_TransactionTran_ACC_TransactionTranList : Sy
 
         ACC_TransactionTranBAL balACC_TransactionTran = new ACC_TransactionTranBAL();
 
-        DataTable dt = balACC_TransactionTran.SelectPage(Offset, PageRecordSize, out TotalRecords, TransactionID, Patient, SubTreatmentID);
+        DataTable dt = balACC_TransactionTran.SelectPage(Offset, PageRecordSize, out TotalRecords, TransactionID, Patient, SubTreatmentID, Quantity,Unit,Amount,Rate);
 
         if(PageRecordSize == 0 && dt.Rows.Count > 0)
         {
@@ -373,7 +373,7 @@ public partial class AdminPanel_ACC_TransactionTran_ACC_TransactionTranList : Sy
             	Offset = (Convert.ToInt32(ViewState["CurrentPage"]) - 1) * PageRecordSize;
 
         ACC_TransactionTranBAL balACC_TransactionTran = new ACC_TransactionTranBAL();
-        DataTable dtACC_TransactionTran = balACC_TransactionTran.SelectPage(Offset, PageRecordSize, out TotalReceivedRecord, TransactionID, Patient, SubTreatmentID);
+        DataTable dtACC_TransactionTran = balACC_TransactionTran.SelectPage(Offset, PageRecordSize, out TotalReceivedRecord, TransactionID, Patient, SubTreatmentID,Quantity,Unit,Amount,Rate);
         if (dtACC_TransactionTran != null && dtACC_TransactionTran.Rows.Count > 0)
 		{
             Session["ExportTable"] = dtACC_TransactionTran;

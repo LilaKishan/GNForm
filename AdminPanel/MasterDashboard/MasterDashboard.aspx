@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default/MasterPage.master" AutoEventWireup="true" CodeFile="MasterDashboard.aspx.cs" Inherits="AdminPanel_MasterDashboard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default/MasterPage.master" AutoEventWireup="true" CodeFile="MasterDashboard.aspx.cs" Inherits="AdminPanel_MasterDashboard_MasterDashboard" %>
 
 <asp:Content ID="cntPageHeader" ContentPlaceHolderID="cphPageHeader" runat="Server">
     <asp:Label ID="lblPageHeader_XXXXX" Text="Master DashBoard " runat="server"></asp:Label><small><asp:Label ID="lblPageHeaderInfo_XXXXX" Text="Master" runat="server"></asp:Label></small>
@@ -354,26 +354,25 @@
                     </div>
                     <div class="portlet-body ">
                         <asp:Label ID="lblNoPatientsRecords" runat="server" Text="No Treatment Summary Records Found" Visible="false" CssClass="text-danger" />
-                        <asp:GridView ID="TreatmentWiseSummary" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" ShowFooter="false">
+                        <asp:GridView ID="TreatmentWiseSummary" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" ShowFooter="True">
                             <Columns>
-                                <asp:BoundField DataField="SerialNo" HeaderText="Sr.">
-                                    <HeaderStyle CssClass="TRDark" Font-Bold="true" HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="TreatmentType" HeaderText="Treatment Type">
-                                    <HeaderStyle CssClass="TRDark" Font-Bold="true" HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="PatientsCount" HeaderText="Patients Count">
-                                    <HeaderStyle CssClass="TRDark" Font-Bold="true" HorizontalAlign="Center" />
-
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="IncomesAmount" HeaderText="Income Amount" DataFormatString="{0:C}">
+                                <asp:BoundField DataField="SerialNo" HeaderText="SerialNo" SortExpression="SerialNo" />
+                                <asp:BoundField DataField="Treatment" HeaderText="Treatment" SortExpression="Treatment" />
+                                <asp:TemplateField HeaderText="Patient Count">
+                                    <ItemTemplate>
+                                        <asp:HyperLink ID="hlCount" SkinID="hlGreen_Grid" runat="server" Text='<%# Eval("PatientsCount") %>' NavigateUrl='<%# "Account/ACC_Transaction/ACC_TransactionList.aspx?HospitalID=" + GNForm3C.CommonFunctions.EncryptBase64(ddlHospitalID.SelectedValue.ToString()) + "&TreatmentID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TreatmentID").ToString()) %>'></asp:HyperLink>
+                                    </ItemTemplate>
                                     <HeaderStyle CssClass="TRDark" Font-Bold="true" HorizontalAlign="Center" />
                                     <ItemStyle HorizontalAlign="Right" />
+                                    <FooterStyle HorizontalAlign="Right" />
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="IncomesAmount" HeaderText="Income Amount" DataFormatString="{0}">
+                                    <HeaderStyle CssClass="TRDark" Font-Bold="true" HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Right" />
+                                    <FooterStyle HorizontalAlign="Right" />
                                 </asp:BoundField>
                             </Columns>
+                            <FooterStyle BackColor="LightGray" Font-Bold="True" />
                         </asp:GridView>
                     </div>
                 </div>

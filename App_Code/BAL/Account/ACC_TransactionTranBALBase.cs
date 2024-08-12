@@ -113,10 +113,10 @@ namespace GNForm3C.BAL
 			ACC_TransactionTranDAL dalACC_TransactionTran = new ACC_TransactionTranDAL();
 			return dalACC_TransactionTran.SelectAll();
 		}
-        public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords, SqlInt32 TransactionID, SqlString Patient,SqlInt32 SubTreatmentID)
-		{
+        public DataTable SelectPage(SqlInt32 PageOffset, SqlInt32 PageSize, out Int32 TotalRecords, SqlInt32 TransactionID, SqlString Patient, SqlInt32 SubTreatmentID, SqlInt32 Quantity, SqlString Unit, SqlDecimal Amount, SqlDecimal Rate)
+        {
 			ACC_TransactionTranDAL dalACC_TransactionTran = new ACC_TransactionTranDAL();
-            return dalACC_TransactionTran.SelectPage(PageOffset, PageSize, out TotalRecords, TransactionID, Patient, SubTreatmentID);
+            return dalACC_TransactionTran.SelectPage(PageOffset, PageSize, out TotalRecords, TransactionID, Patient, SubTreatmentID,Quantity,Unit,Amount,Rate);
 		}
 
 		#endregion SelectOperation
