@@ -1,0 +1,2090 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsACC_GNTransaction">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>130ac1b0-b4ad-4c55-b65f-45d4fa1c314d</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dtPatientReport">
+      <Query>
+        <DataSourceName>dsACC_GNTransaction</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="TransactionID">
+          <DataField>TransactionID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HospitalID">
+          <DataField>HospitalID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TransactionTranID">
+          <DataField>TransactionTranID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TreatmentID">
+          <DataField>TreatmentID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Treatment">
+          <DataField>Treatment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PatientID">
+          <DataField>PatientID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PatientName">
+          <DataField>PatientName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Hospital">
+          <DataField>Hospital</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Age">
+          <DataField>Age</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MobileNo">
+          <DataField>MobileNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DateOfAdmission">
+          <DataField>DateOfAdmission</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DateOfDischarge">
+          <DataField>DateOfDischarge</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ReferenceDoctor">
+          <DataField>ReferenceDoctor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptNo">
+          <DataField>ReceiptNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptTypeName">
+          <DataField>ReceiptTypeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TreatmentDate">
+          <DataField>TreatmentDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Rate">
+          <DataField>Rate</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="FinYearName">
+          <DataField>FinYearName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dsACC_GNTransaction</rd:DataSetName>
+        <rd:SchemaPath>D:\GNWebsoft\GNWebForm3C_CodeB\App_Code\DataSet\dsACC_GNTransaction.xsd</rd:SchemaPath>
+        <rd:TableName>dtPatientReport</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Textbox71">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Patient Details:</Value>
+                    <Style>
+                      <FontFamily>roboto Condensed black</FontFamily>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox71</rd:DefaultName>
+            <Top>0.125in</Top>
+            <Left>0.125in</Left>
+            <Height>0.375in</Height>
+            <Width>1.75in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Tablix Name="Tablix6">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.10833in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.13333in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.48333in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox140">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Receipt No.</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox140</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox137">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>:</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox137</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ReceiptNo">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Fields!FinYearName.Value)&amp;"/"&amp;(Fields!ReceiptNo.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ReceiptNo</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox30">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>ReceiptType</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox25</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox79">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>:</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox79</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="MobileNo4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ReceiptTypeName.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>MobileNo</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox19">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Admit Date</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox77">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>:</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox77</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="PatientName3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!DateOfAdmission.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <Format>dd-MM-yyyy</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>PatientName</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Age4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Discharge Date</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Age</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox78">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>:</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox78</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Age5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!DateOfDischarge.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <Format>dd-MM-yyyy</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Age1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dtPatientReport</DataSetName>
+            <Top>1.62983cm</Top>
+            <Left>11.02156cm</Left>
+            <Height>1in</Height>
+            <Width>2.72499in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Tablix Name="Tablix5">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.3679in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.125in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.63333in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox15">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Patient Name</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox73">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>:</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox73</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="PatientName2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!PatientName.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>PatientName</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Age2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Age</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Age</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox74">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>:</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox74</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Age3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Age.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Age1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox28">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Contact No.</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox25</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox75">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>:</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox75</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="MobileNo2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!MobileNo.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>MobileNo</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox172">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Ref. Doctor</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox172</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox173">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>:</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox173</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ReferenceDoctor">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ReferenceDoctor.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ReferenceDoctor</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dtPatientReport</DataSetName>
+            <Top>1.62983cm</Top>
+            <Left>0.3175cm</Left>
+            <Height>1in</Height>
+            <Width>3.12623in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Line Name="Line2">
+            <Top>1.88833in</Top>
+            <Height>0in</Height>
+            <Width>7.5in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox145">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Provisional Bill:</Value>
+                    <Style>
+                      <FontFamily>roboto Condensed black</FontFamily>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox145</rd:DefaultName>
+            <Top>2.08278in</Top>
+            <Left>0.125in</Left>
+            <Height>0.35in</Height>
+            <Width>1.65in</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Tablix Name="Tablix12">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>0.58541in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.06459in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.06589in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.71289in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.89375in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.67708in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox146">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Sr.</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox146</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox182">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Date</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox182</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox148">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Treatment</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox148</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox190">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Qty.</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox190</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox150">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Rate(₹)</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox150</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox154">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Amount(₹)</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox154</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox147">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=RowNumber(nothing)</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox147</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TreatmentDate">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!TreatmentDate.Value</Value>
+                                  <Style>
+                                    <FontFamily>Roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <Format>dd-MM-yyyy</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>TreatmentDate</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Treatment">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Treatment.Value</Value>
+                                  <Style>
+                                    <FontFamily>Roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Treatment</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Quantity">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Quantity.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Quantity</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Rate">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Rate.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <Format>'₹' #,0.00;('₹' #,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Rate</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>en-IN</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Amount">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Amount.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <Format>'₹' #,0.00;('₹' #,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Amount</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>en-IN</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox156">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Total(₹)</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox156</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>5</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox160">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!Amount.Value)</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>'₹' #,0.00;('₹' #,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox160</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>en-IN</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dtPatientReport</DataSetName>
+            <Top>2.625in</Top>
+            <Left>0.125in</Left>
+            <Height>0.75in</Height>
+            <Width>6.99961in</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Textbox Name="Textbox167">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Signature</Value>
+                    <Style>
+                      <FontFamily>roboto Condensed black</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox167</rd:DefaultName>
+            <Top>5.75in</Top>
+            <Left>5.44753in</Left>
+            <Height>0.25in</Height>
+            <Width>1.67747in</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <TopBorder>
+                <Style>Solid</Style>
+              </TopBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox177">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Rs(Inwords):</Value>
+                    <Style>
+                      <FontFamily>roboto Condensed</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Code.ConvertNumberToWords(sum(Fields!Amount.Value)) &amp; " Only"</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox177</rd:DefaultName>
+            <Top>3.705in</Top>
+            <Left>0.155in</Left>
+            <Height>0.475in</Height>
+            <Width>3.52417in</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>6.75in</Height>
+        <Style />
+      </Body>
+      <Width>7.5in</Width>
+      <Page>
+        <PageHeader>
+          <Height>0.96666in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="RptTitle">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!ReportTitle.Value</Value>
+                      <Style>
+                        <FontFamily> roboto Condensed black</FontFamily>
+                        <FontWeight>Normal</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>RptTitle</rd:DefaultName>
+              <Top>1.14653cm</Top>
+              <Left>1.975in</Left>
+              <Height>0.25in</Height>
+              <Width>5.455in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Image Name="Image1">
+              <Source>Embedded</Source>
+              <Value>logo</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.37305cm</Top>
+              <Left>0.3175cm</Left>
+              <Height>0.42952in</Height>
+              <Width>1.75833in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+            <Line Name="Line1">
+              <Top>0.82639in</Top>
+              <Height>0in</Height>
+              <Width>7.5in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="Textbox1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Hospital.Value, "dtPatientReport")</Value>
+                      <Style>
+                        <FontFamily>roboto Condensed black</FontFamily>
+                        <FontSize>16pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>0.00416in</Top>
+              <Left>2.0225in</Left>
+              <Height>0.37778in</Height>
+              <Width>5.455in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>0.25in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox100">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Printed On : "&amp; Parameters!PrintDate.Value</Value>
+                      <Style>
+                        <FontFamily>roboto Condensed</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox100</rd:DefaultName>
+              <Left>0.01802cm</Left>
+              <Height>0.25in</Height>
+              <Width>2.5in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox101">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Page Of " &amp; Globals!PageNumber &amp; " of "&amp; Globals!TotalPages</Value>
+                      <Style>
+                        <FontFamily>roboto Condensed</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox101</rd:DefaultName>
+              <Left>6.5in</Left>
+              <Height>0.25in</Height>
+              <Width>1in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>11.69in</PageHeight>
+        <PageWidth>8.27in</PageWidth>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.25in</RightMargin>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>0.25in</BottomMargin>
+        <ColumnSpacing>0.05118in</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ReportTitle">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrintDate">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ReportSubTitle">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ReportTitle</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>PrintDate</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ReportSubTitle</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Code>Function ConvertNumberToWords(ByVal number As Decimal) As String
+    Dim unitsMap As String() = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"}
+    Dim tensMap As String() = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"}
+
+    If number = 0 Then
+        Return "Zero"
+    End If
+
+    Dim words As String = ""
+
+    If number &gt;= 10000000 Then
+        words &amp;= ConvertNumberToWords(Int(number / 10000000)) &amp; " Crore "
+        number = number Mod 10000000
+    End If
+
+    If number &gt;= 100000 Then
+        words &amp;= ConvertNumberToWords(Int(number / 100000)) &amp; " Lakh "
+        number = number Mod 100000
+    End If
+
+    If number &gt;= 1000 Then
+        words &amp;= ConvertNumberToWords(Int(number / 1000)) &amp; " Thousand "
+        number = number Mod 1000
+    End If
+
+    If number &gt;= 100 Then
+        words &amp;= ConvertNumberToWords(Int(number / 100)) &amp; " Hundred "
+        number = number Mod 100
+    End If
+
+    If number &gt; 0 Then
+        If words &lt;&gt; "" Then words &amp;= "and "
+        If number &lt; 20 Then
+            words &amp;= unitsMap(number)
+        Else
+            words &amp;= tensMap(Int(number / 10))
+            If (number Mod 10) &gt; 0 Then
+                words &amp;= "-" &amp; unitsMap(number Mod 10)
+            End If
+        End If
+    End If
+
+    Return words
+End Function</Code>
+  <EmbeddedImages>
+    <EmbeddedImage Name="logo">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>c8c8b623-be28-45ef-aa2a-1ad9f3b6c998</rd:ReportID>
+</Report>

@@ -145,48 +145,16 @@ namespace GNForm3C.BAL
             ACC_GNTransactionDAL dalACC_GNTransaction = new ACC_GNTransactionDAL();
             return dalACC_GNTransaction.SelectAll();
         }
-        public DataTable SelectPage(
-    SqlInt32 PageOffset,
-    SqlInt32 PageSize,
-    out Int32 TotalRecords,
-    SqlInt32 PatientID,
-    SqlDecimal Amount,
-    SqlString ReferenceDoctor,
-    SqlInt32 Count,
-    SqlInt32 ReceiptNo,
-    SqlDateTime Date,
-    SqlDateTime DateOfAdmission,
-    SqlDateTime DateOfDischarge,
-    SqlDecimal Deposite,
-    SqlDecimal NetAmount,
-    SqlInt32 NoOfDays,
-    SqlInt32 HospitalID,
-    SqlInt32 FinYearID,
-    SqlInt32 ReceiptTypeID
-)
+        public DataTable SelectPage(SqlInt32 PageOffset,SqlInt32 PageSize,out Int32 TotalRecords,SqlInt32 PatientID,SqlDecimal Amount,SqlString ReferenceDoctor,SqlInt32 Count,SqlInt32 ReceiptNo,SqlDateTime Date,SqlDateTime DateOfAdmission,SqlDateTime DateOfDischarge,SqlDecimal Deposite,SqlDecimal NetAmount,SqlInt32 NoOfDays,SqlInt32 HospitalID,SqlInt32 FinYearID,SqlInt32 ReceiptTypeID)
         {
             ACC_GNTransactionDAL dalACC_GNTransaction = new ACC_GNTransactionDAL();
-            return dalACC_GNTransaction.SelectPage(
-                PageOffset,
-                PageSize,
-                out TotalRecords,
-                PatientID,
-                Amount,
-                ReferenceDoctor,
-                Count,
-                ReceiptNo,
-                Date,
-                DateOfAdmission,
-                DateOfDischarge,
-                Deposite,
-                NetAmount,
-                NoOfDays,
-                HospitalID,
-                FinYearID,
-                ReceiptTypeID
-            );
+            return dalACC_GNTransaction.SelectPage(PageOffset,PageSize,out TotalRecords,PatientID,Amount,ReferenceDoctor,Count,ReceiptNo,Date,DateOfAdmission,DateOfDischarge,Deposite,NetAmount,NoOfDays,HospitalID,FinYearID,ReceiptTypeID);
         }
-
+        public DataTable SelectReportPage(SqlInt32 TransactionID)
+        {
+            ACC_GNTransactionDAL dalACC_GNTransaction = new ACC_GNTransactionDAL();
+            return dalACC_GNTransaction.SelectReportPage(TransactionID);
+        }
 
         #endregion SelectOperation		
 

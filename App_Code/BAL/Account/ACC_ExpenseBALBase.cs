@@ -118,12 +118,16 @@ namespace GNForm3C.BAL
 			ACC_ExpenseDAL dalACC_Expense = new ACC_ExpenseDAL();
 			return dalACC_Expense.SelectPage(PageOffset, PageSize, out TotalRecords, ExpenseTypeID, TagName,Amount, ExpenseDate, HospitalID, FinYearID);
 		}
+        public DataTable SelectReportPage(SqlInt32 HospitalID,SqlDateTime FromDate,SqlDateTime ToDate)
+        {
+            ACC_ExpenseDAL dalACC_Expense = new ACC_ExpenseDAL();
+            return dalACC_Expense.SelectReportPage(HospitalID,FromDate,ToDate);
+        }
+        #endregion SelectOperation
 
-		#endregion SelectOperation
+        #region ComboBox
 
-		#region ComboBox
-
-		public DataTable SelectComboBox()
+        public DataTable SelectComboBox()
 		{
 			ACC_ExpenseDAL dalACC_Expense = new ACC_ExpenseDAL();
 			return dalACC_Expense.SelectComboBox();

@@ -40,6 +40,15 @@ public partial class UserControl_ucPatient : System.Web.UI.UserControl
 
                 if (!dr["PrimaryDesc"].Equals(DBNull.Value))
                     lblucPrimaryDesc.Text = Convert.ToString(dr["PrimaryDesc"]);
+                if (!dr["PatientPhotoPath"].Equals(DBNull.Value))
+                {
+                    imhPatient.ImageUrl = dr["PatientPhotoPath"].ToString();
+                }
+                else
+                {
+                    imhPatient.ImageUrl = "~/Default/Images/profile_user.jpg";
+
+                }
             }
         }
 

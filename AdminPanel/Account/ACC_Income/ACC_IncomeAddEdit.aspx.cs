@@ -194,7 +194,6 @@ public partial class AdminPanel_Account_ACC_Income_ACC_IncomeAddEdit : System.We
 				
 				#endregion 15.2 Gather Data 
 
-
 				#region 15.3 Insert,Update,Copy 
 
 				if (Request.QueryString["IncomeID"] != null && Request.QueryString["Copy"] == null) 

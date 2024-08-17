@@ -166,8 +166,17 @@ namespace GNForm3C.BAL
 			return dalACC_Income.SelectComboBox();
 		}
 
-		#endregion ComboBox
+        #endregion ComboBox
 
-	}
+        #region RDLC (Reports)
+        public DataTable Report_ACC_Income_List()
+        {
+            ACC_IncomeDAL dalACC_Income = new ACC_IncomeDAL();
+            return dalACC_Income.Report_ACC_Income_List();
+        }
+
+        #endregion RDLC (Reports)
+
+    }
 
 }

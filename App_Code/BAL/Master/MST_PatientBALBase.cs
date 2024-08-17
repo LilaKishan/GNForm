@@ -81,21 +81,7 @@ namespace GNForm3C.BAL
 
         #endregion UpdateOperation
 
-        #region Discharge patient
-        public Boolean UpdateDischargeAndTotalDays(SqlInt32 TransactionID)
-        {
-            MST_PatientDAL dalMST_Patient = new MST_PatientDAL();
-            if (dalMST_Patient.UpdateDischargeAndTotalDays(TransactionID))
-            {
-                return true;
-            }
-            else
-            {
-                this.Message = dalMST_Patient.Message;
-                return false;
-            }
-        }
-        #endregion
+       
 
         #region DeleteOperation
 

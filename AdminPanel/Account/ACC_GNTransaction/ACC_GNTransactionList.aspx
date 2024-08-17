@@ -286,6 +286,12 @@
                                             <thead>
                                                 <tr class="TRDark">
                                                     <th>
+                                                        <asp:Label ID="lbhFinYearID" runat="server" Text="Fin Year"></asp:Label>
+                                                    </th>
+                                                    <th>
+                                                        <asp:Label ID="lbhHospitalID" runat="server" Text="Hospital"></asp:Label>
+                                                    </th>
+                                                    <th>
                                                         <asp:Label ID="lbhPatient" runat="server" Text="Patient"></asp:Label>
                                                     </th>
                                                     <%--   <th><asp:Label ID="lbhTreatmentID" runat="server" Text="Treatment"></asp:Label>
@@ -314,20 +320,17 @@
                                                         <asp:Label ID="lbhDateOfDischarge" runat="server" Text="Date Of Discharge"></asp:Label>
                                                     </th>
                                                     <th>
+                                                        <asp:Label ID="lbhNoOfDays" runat="server" Text="No Of Days"></asp:Label>
+                                                    </th>
+                                                    <th>
                                                         <asp:Label ID="lbhDeposite" runat="server" Text="Deposite"></asp:Label>
                                                     </th>
                                                     <th>
                                                         <asp:Label ID="lbhNetAmount" runat="server" Text="Net Amount"></asp:Label>
                                                     </th>
-                                                    <th>
-                                                        <asp:Label ID="lbhNoOfDays" runat="server" Text="No Of Days"></asp:Label>
-                                                    </th>
-                                                    <th>
-                                                        <asp:Label ID="lbhHospitalID" runat="server" Text="Hospital"></asp:Label>
-                                                    </th>
-                                                    <th>
-                                                        <asp:Label ID="lbhFinYearID" runat="server" Text="Fin Year"></asp:Label>
-                                                    </th>
+
+
+
                                                     <th>
                                                         <asp:Label ID="lbhReceiptTypeID" runat="server" Text="Receipt Type"></asp:Label>
                                                     </th>
@@ -343,6 +346,12 @@
                                                     <ItemTemplate>
                                                         <%-- Table Rows --%>
                                                         <tr class="odd gradeX">
+                                                            <td>
+                                                                <%#Eval("FinYearName") %>
+                                                            </td>
+                                                            <td>
+                                                                <%#Eval("Hospital") %>
+                                                            </td>
                                                             <td>
                                                                 <asp:HyperLink ID="hlViewTransactionID" NavigateUrl='<%# "~/AdminPanel/Account/ACC_GNTransaction/ACC_GNTransactionView.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' data-target="#viewiFrameReg" CssClass="modalButton" data-toggle="modal" runat="server"><%#Eval("PatientName") %></asp:HyperLink>
                                                             </td>
@@ -374,26 +383,23 @@
                                                                 <%#Eval("DateOfDischarge") %>
                                                             </td>
                                                             <td>
+                                                                <%#Eval("NoOfDays") %>
+                                                            </td>
+
+                                                            <td>
                                                                 <%#Eval("Deposite") %>
                                                             </td>
                                                             <td>
                                                                 <%#Eval("NetAmount",GNForm3C.CV.DefaultCurrencyFormatWithOutDecimalPoint) %>
                                                             </td>
-                                                            <td>
-                                                                <%#Eval("NoOfDays") %>
-                                                            </td>
-                                                            <td>
-                                                                <%#Eval("Hospital") %>
-                                                            </td>
-                                                            <td>
-                                                                <%#Eval("FinYearName") %>
-                                                            </td>
+
+
                                                             <td>
                                                                 <%#Eval("ReceiptTypeName") %>
                                                             </td>
                                                             <td class="text-nowrap text-center">
                                                                 <asp:HyperLink ID="hlView" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Account/ACC_GNTransaction/ACC_GNTransactionView.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>
-                                                                <asp:HyperLink ID="hlEdit" SkinID="Edit" NavigateUrl='<%# "~/AdminPanel/Account/ACC_Transaction/ACC_TransactionAddEdit.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' runat="server"></asp:HyperLink>
+                                                                <asp:HyperLink ID="hlEdit" SkinID="Edit" NavigateUrl='<%# "~/AdminPanel/Account/ACC_GNTransaction/ACC_GNTransactionAddEdit.aspx?TransactionID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) %>' runat="server"></asp:HyperLink>
                                                                 <%--<asp:HyperLink ID="HyperLink1" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Master/MST_Patient/MST_PatientView.aspx?PatientID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("PatientID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>--%>
                                                                 <%--<asp:LinkButton ID="lbtnDelete" runat="server"
                                                                     SkinID="Delete"
@@ -408,6 +414,11 @@
                                                                     CommandArgument='<%# Eval("TransactionID") %>'
                                                                     Enabled='<%# Eval("DateOfDischarge") == DBNull.Value ? true : false %>'>
                                                                 </asp:LinkButton>
+                                                                <asp:HyperLink
+                                                                    runat="server"
+                                                                    ID="hlprint"
+                                                                    SkinID="hlprint"
+                                                                    NavigateUrl='<%# "~/AdminPanel/RPT/RPT_ACC_GNTransaction.aspx?TransactionID=" +   GNForm3C.CommonFunctions.EncryptBase64(Eval("TransactionID").ToString()) + "&ReportType=" + GNForm3C.CommonFunctions.EncryptBase64("PDF") %>'></asp:HyperLink>
                                                             </td>
                                                         </tr>
                                                         <%-- END Table Rows --%>

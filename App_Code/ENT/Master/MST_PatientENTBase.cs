@@ -97,6 +97,18 @@ namespace GNForm3C.ENT
                 _UserID = value;
             }
         }
+        protected SqlString _PatientPhotoPath;
+        public SqlString PatientPhotoPath
+        {
+            get
+            {
+                return _PatientPhotoPath;
+            }
+            set
+            {
+                _PatientPhotoPath = value;
+            }
+        }
 
         protected SqlDateTime _Created;
         public SqlDateTime Created
@@ -161,6 +173,9 @@ namespace GNForm3C.ENT
 
             if (!UserID.IsNull)
                 MST_PatientENT_String += "| UserID = " + UserID.Value.ToString();
+
+            if (!_PatientPhotoPath.IsNull)
+                MST_PatientENT_String += "| PatientPhotoPath=" + PatientPhotoPath.Value.ToString();
 
             if (!Created.IsNull)
                 MST_PatientENT_String += "| Created = " + Created.Value.ToString("dd-MM-yyyy");

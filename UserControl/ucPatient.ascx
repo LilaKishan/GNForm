@@ -17,7 +17,7 @@
                             <div class="col-md-12">
                                 <ul class="nav">
                                     <li class="text-center margin-bottom-10 margin-top-10">
-                                        <asp:Image ID="imhPatient" runat="server" Height="180" CssClass=" img-circle imgStudentPhoto" AlternateText="Patient Image" EnableViewState="false" ImageUrl="~/Default/Images/profile_user.jpg" />
+                                        <asp:Image ID="imhPatient" runat="server" Height="180" CssClass=" img-circle imgStudentPhoto" AlternateText="Patient Image" EnableViewState="false" />
 
                                     </li>
                                 </ul>
@@ -32,7 +32,7 @@
                                             <tr class="text-center">
                                                 <td class="text-center sbold" colspan="2">
                                                     <h4>
-                                                        <asp:Label EnableViewState="false" ID="lblucTitle" class="bold font-blue-soft text-center gn-label" runat="server">Pala Nevil Dilipbhai</asp:Label>
+                                                        <asp:Label EnableViewState="false" ID="lblucTitle" class="bold font-blue-soft text-center gn-label" runat="server"></asp:Label>
 
                                                     </h4>
                                                     <small>

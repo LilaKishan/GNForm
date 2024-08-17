@@ -335,12 +335,46 @@ namespace GNForm3C.DAL
 				return null;
 			}
 		}
+		public DataTable SelectReportPage(SqlInt32 HospitalID,SqlDateTime FromDate, SqlDateTime ToDate)
+        {
+   
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PP_HospitalWiseExpenseList");
+                sqlDB.AddInParameter(dbCMD, "@FromDate", SqlDbType.DateTime, FromDate);
+                sqlDB.AddInParameter(dbCMD, "@ToDate", SqlDbType.DateTime, ToDate);
+                sqlDB.AddInParameter(dbCMD, "@HospitalID", SqlDbType.Int, HospitalID);
 
-		#endregion SelectOperation
+                DataTable dtACC_Expense = new DataTable("PP_HospitalWiseExpenseList");
 
-		#region ComboBox
+                DataBaseHelper DBH = new DataBaseHelper();
+                DBH.LoadDataTable(sqlDB, dbCMD, dtACC_Expense);
 
-		public DataTable SelectComboBox()
+     
+                return dtACC_Expense;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return null;
+            }
+        }
+
+        #endregion SelectOperation
+
+        #region ComboBox
+
+        public DataTable SelectComboBox()
 		{
 			try
 			{
@@ -405,6 +439,8 @@ namespace GNForm3C.DAL
 
 
         #endregion AutoComplete
+        
+
 
     }
 }

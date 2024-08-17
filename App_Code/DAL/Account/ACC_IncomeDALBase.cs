@@ -484,5 +484,39 @@ namespace GNForm3C.DAL
 
         #endregion AutoComplete
 
+        #region RDLC (Reports)
+        public DataTable Report_ACC_Income_List()
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PP_ACC_Income_ByFinyear");
+
+                DataTable dtACC_Income = new DataTable("PP_ACC_Income_ByFinyear");
+
+                DataBaseHelper DBH = new DataBaseHelper();
+                DBH.LoadDataTable(sqlDB, dbCMD, dtACC_Income);
+
+                return dtACC_Income;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return null;
+            }
+        }
+
+        #endregion RDLC (Reports)
+      
+
     }
 }

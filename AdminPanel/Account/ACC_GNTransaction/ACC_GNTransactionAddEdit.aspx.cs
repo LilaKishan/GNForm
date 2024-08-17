@@ -13,6 +13,7 @@ using System.Data;
 using System.Runtime.Remoting.Contexts;
 using System.Web.Script.Serialization;
 using Microsoft.Office.Interop.Excel;
+using System.IO;
 
 public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEdit : System.Web.UI.Page
 {
@@ -313,6 +314,7 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
 
     }
 
+
     #endregion 15.1 Save Transaction
 
     #region  15.2 Save Patient
@@ -324,8 +326,11 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
         {
             try
             {
-                MST_PatientBAL balMST_Patient = new MST_PatientBAL();
+                ACC_GNTransactionBAL balACC_GNTransaction = new ACC_GNTransactionBAL();
                 MST_PatientENT entMST_Patient = new MST_PatientENT();
+                MST_PatientBAL balMST_Patient = new MST_PatientBAL();
+
+
 
                 #region 15.1 Validate Fields 
 
@@ -338,6 +343,8 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
                     ErrorMsg += " - " + CommonMessage.ErrorRequiredField("Mobile No");
                 if (dtpDOB.Text.Trim() == String.Empty)
                     ErrorMsg += " - " + CommonMessage.ErrorRequiredField("DOB");
+                if (!this.fuPatientPhotoPath.HasFile)
+                    ErrorMsg += " - " + CommonMessage.ErrorRequiredField("Upload Image");
 
                 if (ErrorMsg != String.Empty)
                 {
@@ -365,6 +372,19 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
 
                 if (txtPrimaryDesc.Text.Trim() != String.Empty)
                     entMST_Patient.PrimaryDesc = txtPrimaryDesc.Text.Trim();
+
+                if (fuPatientPhotoPath.HasFile)
+                {
+                    string PhotoPath = "~/Default/Images/Patient/";
+                    string AbsoutePath = Server.MapPath(PhotoPath);
+                    if (!Directory.Exists(AbsoutePath))
+                        Directory.CreateDirectory(AbsoutePath);
+                    fuPatientPhotoPath.SaveAs(AbsoutePath + fuPatientPhotoPath.FileName.ToString().Trim());
+
+
+                    entMST_Patient.PatientPhotoPath = PhotoPath + fuPatientPhotoPath.FileName.ToString().Trim();
+
+                }
 
 
                 entMST_Patient.UserID = Convert.ToInt32(Session["UserID"]);
@@ -405,6 +425,7 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransactionAddEd
                             CommonFillMethods.FillDropDownListPatientID(ddlPatientID);
                             ddlPatientID.SelectedValue = InsertedPatientID.ToString();
                             ucPatient.ShowPatient(Convert.ToInt32(InsertedPatientID.ToString()));
+
 
                         }
                     }
