@@ -91,7 +91,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>SR</Value>
+                                  <Value>Sr.</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -229,7 +229,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox21</rd:DefaultName>
@@ -261,7 +263,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
@@ -416,8 +420,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="₹"&amp;Fields!Amount.Value</Value>
-                                  <Style />
+                                  <Value>=Fields!Amount.Value</Value>
+                                  <Style>
+                                    <Format>'₹'#,0.00;('₹'#,0.00)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -434,6 +440,7 @@
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>en-IN</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -476,15 +483,29 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
+                        <Textbox Name="Amount2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="TotalIncome : ₹" &amp; SUM(Fields!Amount.Value)</Value>
+                                  <Value>Total Income:</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value xml:space="preserve"> </Value>
                                   <Style />
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Sum(Fields!Amount.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>'₹'#,0.00;('₹'#,0.00)</Format>
+                                    <rd:FormatSymbolCulture>en-IN</rd:FormatSymbolCulture>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -492,12 +513,12 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <rd:DefaultName>Amount2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -554,10 +575,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5in</Width>
+                  <Width>1.3in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5in</Width>
+                  <Width>1.475in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -575,6 +599,7 @@
                                 <TextRun>
                                   <Value>=(Fields!FinYearName.Value)</Value>
                                   <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -593,9 +618,10 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>2</ColSpan>
+                        <ColSpan>3</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
                     <TablixCell />
                   </TablixCells>
                 </TablixRow>
@@ -612,7 +638,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Hospital</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -637,6 +666,42 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>IncomeType</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                              <Width>2pt</Width>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Textbox26">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -645,11 +710,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Amount</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -683,7 +751,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Hospital.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -707,23 +777,26 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Amount1">
+                        <Textbox Name="IncomeType1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!Amount.Value)</Value>
-                                  <Style />
+                                  <Value>=Fields!IncomeType.Value</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <Format>'₹'#,0.00;('₹'#,0.00)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Amount1</rd:DefaultName>
+                          <rd:DefaultName>IncomeType1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -733,6 +806,43 @@
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>en-IN</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Fields!Amount.Value)</Value>
+                                  <Style>
+                                    <FontFamily>roboto Condensed</FontFamily>
+                                    <Format>'₹'#,0.00;('₹'#,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                              <Width>2pt</Width>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>en-IN</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -743,6 +853,7 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
               </TablixMembers>
@@ -774,7 +885,7 @@
             </PageBreak>
             <Top>1.25in</Top>
             <Height>0.75in</Height>
-            <Width>5in</Width>
+            <Width>3.775in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -783,7 +894,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>7.25in</Height>
+        <Height>2.10833in</Height>
         <Style>
           <Border>
             <Style>None</Style>

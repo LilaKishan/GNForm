@@ -140,6 +140,49 @@ namespace GNForm3C.DAL
         //    }
         //}
 
+        #region Update
+
+        public Boolean Update(MST_PatientENT entMST_Patient)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_MST_GNPatient_Update");
+
+                sqlDB.AddInParameter(dbCMD, "@PatientID", SqlDbType.Int, entMST_Patient.PatientID);
+                sqlDB.AddInParameter(dbCMD, "@PatientName", SqlDbType.NVarChar, entMST_Patient.PatientName);
+                sqlDB.AddInParameter(dbCMD, "@Age", SqlDbType.Int, entMST_Patient.Age);
+                sqlDB.AddInParameter(dbCMD, "@MobileNo", SqlDbType.NVarChar, entMST_Patient.MobileNo);
+                sqlDB.AddInParameter(dbCMD, "@DOB", SqlDbType.DateTime, entMST_Patient.DOB);
+                sqlDB.AddInParameter(dbCMD, "@PrimaryDesc", SqlDbType.NVarChar, entMST_Patient.PrimaryDesc);
+                sqlDB.AddInParameter(dbCMD, "@UserID", SqlDbType.Int, entMST_Patient.UserID);
+                sqlDB.AddInParameter(dbCMD, "@PatientPhotoPath", SqlDbType.NVarChar, entMST_Patient.PatientPhotoPath);
+                sqlDB.AddInParameter(dbCMD, "@Modified", SqlDbType.DateTime, entMST_Patient.Modified);
+
+                DataBaseHelper DBH = new DataBaseHelper();
+                DBH.ExecuteNonQuery(sqlDB, dbCMD);
+
+                //PatientID = entMST_GNPatient.PatientID;
+
+                return true;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return false;
+            }
+        }
+
+        #endregion Update
 
         #region Discharge patient
         public Boolean UpdateDischargeAndTotalDays(SqlInt32 TransactionID)
@@ -321,106 +364,7 @@ namespace GNForm3C.DAL
                 return null;
             }
         }
-        //        public DataTable SelectAll()
-        //        {
-        //            try
-        //            {
-        //                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-        //                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_ACC_GNTransaction_SelectAll");
-
-        //                DataTable dtACC_GNTransaction = new DataTable("PR_ACC_GNTransaction_SelectAll");
-
-        //                DataBaseHelper DBH = new DataBaseHelper();
-        //                DBH.LoadDataTable(sqlDB, dbCMD, dtACC_GNTransaction);
-
-        //                return dtACC_GNTransaction;
-        //            }
-        //            catch (SqlException sqlex)
-        //            {
-        //                Message = SQLDataExceptionMessage(sqlex);
-        //                if (SQLDataExceptionHandler(sqlex))
-        //                    throw;
-        //                return null;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                Message = ExceptionMessage(ex);
-        //                if (ExceptionHandler(ex))
-        //                    throw;
-        //                return null;
-        //            }
-        //        }
-        //        public DataTable SelectPage(
-        //    SqlInt32 PageOffset,
-        //    SqlInt32 PageSize,
-        //    out Int32 TotalRecords,
-        //    SqlInt32 PatientID,
-        //    SqlDecimal Amount,
-        //    SqlString ReferenceDoctor,
-        //    SqlInt32 Count,
-        //    SqlInt32 ReceiptNo,
-        //    SqlDateTime Date,
-        //    SqlDateTime DateOfAdmission,
-        //    SqlDateTime DateOfDischarge,
-        //        SqlDecimal Deposite,
-        //        SqlDecimal NetAmount,
-        //    SqlInt32 NoOfDays,
-        //    SqlInt32 HospitalID,
-        //    SqlInt32 FinYearID,
-        //    SqlInt32 ReceiptTypeID
-        //)
-        //        {
-        //            TotalRecords = 0;
-        //            try
-        //            {
-        //                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-        //                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_ACC_GNTransaction_SelectPage");
-
-        //                // Add parameters
-        //                sqlDB.AddInParameter(dbCMD, "@PageOffset", SqlDbType.Int, PageOffset);
-        //                sqlDB.AddInParameter(dbCMD, "@PageSize", SqlDbType.Int, PageSize);
-        //                sqlDB.AddOutParameter(dbCMD, "@TotalRecords", SqlDbType.Int, 4);
-
-        //                sqlDB.AddInParameter(dbCMD, "@PatientID", SqlDbType.Int, PatientID);
-        //                sqlDB.AddInParameter(dbCMD, "@Amount", SqlDbType.Decimal, Amount);
-        //                sqlDB.AddInParameter(dbCMD, "@ReferenceDoctor", SqlDbType.VarChar, ReferenceDoctor);
-        //                sqlDB.AddInParameter(dbCMD, "@Count", SqlDbType.Int, Count);
-        //                sqlDB.AddInParameter(dbCMD, "@ReceiptNo", SqlDbType.Int, ReceiptNo);
-        //                sqlDB.AddInParameter(dbCMD, "@Date", SqlDbType.DateTime, Date);
-        //                sqlDB.AddInParameter(dbCMD, "@DateOfAdmission", SqlDbType.DateTime, DateOfAdmission);
-        //                sqlDB.AddInParameter(dbCMD, "@DateOfDischarge", SqlDbType.DateTime, DateOfDischarge);
-        //                sqlDB.AddInParameter(dbCMD, "@Deposite", SqlDbType.Decimal, Deposite);
-        //                sqlDB.AddInParameter(dbCMD, "@NetAmount", SqlDbType.Decimal, NetAmount);
-        //                sqlDB.AddInParameter(dbCMD, "@NoOfDays", SqlDbType.Int, NoOfDays);
-        //                sqlDB.AddInParameter(dbCMD, "@HospitalID", SqlDbType.Int, HospitalID);
-        //                sqlDB.AddInParameter(dbCMD, "@FinYearID", SqlDbType.Int, FinYearID);
-        //                sqlDB.AddInParameter(dbCMD, "@ReceiptTypeID", SqlDbType.Int, ReceiptTypeID);
-
-        //                DataTable dtACC_GNTransaction = new DataTable("PR_ACC_GNTransaction_SelectPage");
-
-        //                DataBaseHelper DBH = new DataBaseHelper();
-        //                DBH.LoadDataTable(sqlDB, dbCMD, dtACC_GNTransaction);
-
-        //                TotalRecords = Convert.ToInt32(dbCMD.Parameters["@TotalRecords"].Value);
-
-        //                return dtACC_GNTransaction;
-        //            }
-        //            catch (SqlException sqlex)
-        //            {
-        //                Message = SQLDataExceptionMessage(sqlex);
-        //                if (SQLDataExceptionHandler(sqlex))
-        //                    throw;
-        //                return null;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                Message = ExceptionMessage(ex);
-        //                if (ExceptionHandler(ex))
-        //                    throw;
-        //                return null;
-        //            }
-        //        }
-
+    
 
         #endregion SelectOperation
 
@@ -461,6 +405,40 @@ namespace GNForm3C.DAL
         #endregion ComboBox
 
         #endregion
+
+        #region Report
+
+        public DataTable RPT_PatientIDCard()
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PP_MST_PatientList");
+
+                DataTable dtACC_Expense = new DataTable("PP_MST_Patient_Select");
+
+                DataBaseHelper DBH = new DataBaseHelper();
+                DBH.LoadDataTable(sqlDB, dbCMD, dtACC_Expense);
+
+                return dtACC_Expense;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return null;
+            }
+        }
+
+        #endregion Report
 
     }
 }

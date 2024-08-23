@@ -20,7 +20,7 @@ public partial class AdminPanel_Account_ACC_Expense_ExpInm_LedgerList : System.W
     Int32 DisplayIndex = CV.DisplayIndex;
 
     #endregion 11.0 Variables
-   
+
     #region 12.0 Page Load event
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -89,8 +89,8 @@ public partial class AdminPanel_Account_ACC_Expense_ExpInm_LedgerList : System.W
         if (txtLedgerType.Text.Trim() != String.Empty)
         {
             LedgerType = txtLedgerType.Text.Trim();
-            }
-            if (dtpLedgerFromDate.Text.Trim() != String.Empty)
+        }
+        if (dtpLedgerFromDate.Text.Trim() != String.Empty)
         {
             FromDate = Convert.ToDateTime(dtpLedgerFromDate.Text.Trim());
         }
@@ -104,14 +104,8 @@ public partial class AdminPanel_Account_ACC_Expense_ExpInm_LedgerList : System.W
         ACC_ExpInm_LedgerBAL balACC_ExpInm_LedgerBAL = new ACC_ExpInm_LedgerBAL();
 
 
-        DataTable dt = balACC_ExpInm_LedgerBAL.SelectPage(Offset, PageRecordSize, out TotalRecords, FromDate, ToDate,LedgerType);
-        foreach (DataRow row in dt.Rows)
-        {
-            if (row.Field<String>("LedgerType") == "Income")
-                TotalBalance += row.Field<decimal>("LedgerAmount");
-            else
-                TotalBalance -= row.Field<decimal>("LedgerAmount");
-        }
+        DataTable dt = balACC_ExpInm_LedgerBAL.SelectPage(Offset, PageRecordSize, out TotalRecords, FromDate, ToDate, LedgerType);
+        
         if (PageRecordSize == 0 && dt.Rows.Count > 0)
         {
             PageRecordSize = dt.Rows.Count;
@@ -336,7 +330,7 @@ public partial class AdminPanel_Account_ACC_Expense_ExpInm_LedgerList : System.W
             Offset = (Convert.ToInt32(ViewState["CurrentPage"]) - 1) * PageRecordSize;
 
         ACC_ExpInm_LedgerBAL balACC_ExpInm_LedgerBAL = new ACC_ExpInm_LedgerBAL();
-        DataTable dtACC_ExpInm_LedgerBAL = balACC_ExpInm_LedgerBAL.SelectPage(Offset, PageRecordSize, out TotalReceivedRecord, FromDate, ToDate,LedgerType);
+        DataTable dtACC_ExpInm_LedgerBAL = balACC_ExpInm_LedgerBAL.SelectPage(Offset, PageRecordSize, out TotalReceivedRecord, FromDate, ToDate, LedgerType);
         if (dtACC_ExpInm_LedgerBAL != null && dtACC_ExpInm_LedgerBAL.Rows.Count > 0)
         {
             Session["ExportTable"] = dtACC_ExpInm_LedgerBAL;

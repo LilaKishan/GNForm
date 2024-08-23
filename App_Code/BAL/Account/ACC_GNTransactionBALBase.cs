@@ -77,7 +77,7 @@ namespace GNForm3C.BAL
         #endregion InsertOperation
 
         #region UpdateOperation
-
+       
         public Boolean Update(ACC_GNTransactionENT entACC_GNTransaction)
         {
             ACC_GNTransactionDAL dalACC_GNTransaction = new ACC_GNTransactionDAL();

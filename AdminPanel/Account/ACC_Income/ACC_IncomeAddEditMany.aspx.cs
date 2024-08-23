@@ -130,6 +130,138 @@ namespace GNForm3C
         #endregion 14.0 Show Button Event
 
         #region 15.0 Save Button Event
+
+        //using foreach loop
+        //protected void btnSave_Click(object sender, EventArgs e)
+        //{
+        //    Page.Validate();
+
+        //    if (Page.IsValid)
+        //    {
+        //        SqlInt32 HospitalID = SqlInt32.Null;
+        //        if (ddlHospitalID.SelectedIndex > 0)
+        //            HospitalID = Convert.ToInt32(ddlHospitalID.SelectedValue);
+
+        //        ACC_IncomeBAL balACC_Income = new ACC_IncomeBAL();
+        //        ACC_IncomeENT entACC_Income = new ACC_IncomeENT();
+
+        //        foreach (RepeaterItem items in rpData.Items)
+        //        {
+        //            try
+        //            {
+        //                #region FindControl
+
+
+
+        //                var ddlFinYearID = (DropDownList)items.FindControl("ddlFinYearID");
+        //                var ddlIncomeTypeID = (DropDownList)items.FindControl("ddlIncomeTypeID");
+
+        //                var dtpIncomeDate = (TextBox)items.FindControl("dtpIncomeDate");
+
+        //                TextBox txtAmount = (TextBox)items.FindControl("txtAmount");
+        //                HiddenField Hdfiled = (HiddenField)items.FindControl("hdIncomeID");
+        //                TextBox txtNote = (TextBox)items.FindControl("txtNote");
+        //                CheckBox chkIsSelected = (CheckBox)items.FindControl("chkIsSelected");
+
+
+        //                #endregion FindControl
+
+        //                #region 15.1.1 Gather Data
+        //                if (chkIsSelected.Checked)
+        //                {
+        //                    entACC_Income.HospitalID = Convert.ToInt32(ddlHospitalID.SelectedValue);
+        //                    entACC_Income.FinYearID = Convert.ToInt32(ddlFinYearID.SelectedValue);
+        //                    entACC_Income.IncomeTypeID = Convert.ToInt32(ddlIncomeTypeID.SelectedValue);
+        //                    entACC_Income.IncomeDate = Convert.ToDateTime(dtpIncomeDate.Text);
+        //                    entACC_Income.Amount = Convert.ToDecimal(txtAmount.Text);
+        //                    entACC_Income.Note = Convert.ToString(txtNote.Text);
+        //                    entACC_Income.UserID = Convert.ToInt32(Session["UserID"]);
+        //                    entACC_Income.Created = DateTime.Now;
+        //                    entACC_Income.Modified = DateTime.Now;
+        //                }
+        //                #endregion 15.1.1 Gather Data
+
+        //                if (Hdfiled.Value != string.Empty)
+        //                {
+        //                    if (chkIsSelected.Checked)
+        //                    {
+        //                        #region 15.1.2 Update Data
+        //                        if (ddlIncomeTypeID.Text.Trim() == string.Empty)
+        //                        {
+        //                            ddlIncomeTypeID.Focus();
+        //                            ucMessage.ShowError("Enter Income Type");
+        //                            break;
+        //                        }
+        //                        else
+        //                        {
+        //                            entACC_Income.IncomeID = Convert.ToInt32(Hdfiled.Value);
+        //                            if (balACC_Income.Update(entACC_Income))
+        //                            {
+        //                                ucMessage.ShowSuccess(CommonMessage.RecordUpdated());
+        //                            }
+        //                        }
+
+        //                        #endregion 15.1.2 Update Data
+        //                    }
+        //                    else
+        //                    {
+        //                        #region 15.1.3 Delete Data
+        //                        if (ddlIncomeTypeID.Text.Trim() == string.Empty)
+        //                        {
+        //                            ddlIncomeTypeID.Focus();
+        //                            ucMessage.ShowError("Enter Income Type");
+        //                            break;
+        //                        }
+        //                        else
+        //                        {
+        //                            entACC_Income.IncomeID = Convert.ToInt32(Hdfiled.Value);
+        //                            if (balACC_Income.Delete(entACC_Income.IncomeID))
+        //                            {
+        //                                ucMessage.ShowSuccess(CommonMessage.DeletedRecord());
+        //                            }
+        //                        }
+
+        //                        #endregion 15.1.3 Delete Data
+        //                    }
+        //                }
+        //                else
+        //                {
+
+        //                    if (chkIsSelected.Checked)
+        //                    {
+        //                        #region 15.1.4 Insert Data
+        //                        if (ddlIncomeTypeID.Text.Trim() == string.Empty && txtAmount.Text.Trim() != string.Empty)
+        //                        {
+        //                            ddlIncomeTypeID.Focus();
+        //                            ucMessage.ShowError("Enter Income Type");
+        //                        }
+        //                        else
+        //                        {
+        //                            if (ddlIncomeTypeID.Text.Trim() != string.Empty)
+        //                            {
+        //                                if (balACC_Income.Insert(entACC_Income))
+        //                                {
+        //                                    Div_ShowResult.Visible = false;
+        //                                    ucMessage.ShowSuccess(CommonMessage.RecordSaved());
+        //                                }
+        //                            }
+        //                        }
+        //                        #endregion  15.1.4 Insert Data
+        //                    }
+        //                }
+        //                Div_ShowResult.Visible = false;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                ucMessage.ShowError(ex.Message);
+        //            }
+        //        }
+        //        ClearControls();
+        //    }
+        //}
+   
+        #region 15.0 Save Button Event DataTable
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             Page.Validate();
@@ -143,13 +275,28 @@ namespace GNForm3C
                 ACC_IncomeBAL balACC_Income = new ACC_IncomeBAL();
                 ACC_IncomeENT entACC_Income = new ACC_IncomeENT();
 
-                foreach (RepeaterItem items in rpData.Items)
+                DataTable dtIncomeTable = new DataTable();
+                dtIncomeTable.Columns.Add("IncomeID", typeof(SqlInt32));
+                dtIncomeTable.Columns.Add("IncomeTypeID", typeof(SqlInt32));
+                dtIncomeTable.Columns.Add("Amount", typeof(SqlDecimal));
+                dtIncomeTable.Columns.Add("IncomeDate", typeof(SqlDateTime));
+                dtIncomeTable.Columns.Add("Note", typeof(SqlString));
+                dtIncomeTable.Columns.Add("Remarks", typeof(SqlString));
+                dtIncomeTable.Columns.Add("HospitalID", typeof(SqlInt32));
+                dtIncomeTable.Columns.Add("FinYearID", typeof(SqlInt32));
+                dtIncomeTable.Columns.Add("UserID", typeof(SqlInt32));
+                dtIncomeTable.Columns.Add("Created", typeof(SqlDateTime));
+                dtIncomeTable.Columns.Add("Modified", typeof(SqlDateTime));
+                dtIncomeTable.Columns.Add("Operation", typeof(string)); // 'I', 'U', or 'D'
+
+
+                try
                 {
-                    try
+
+                    foreach (RepeaterItem items in rpData.Items)
                     {
+
                         #region FindControl
-
-
 
                         var ddlFinYearID = (DropDownList)items.FindControl("ddlFinYearID");
                         var ddlIncomeTypeID = (DropDownList)items.FindControl("ddlIncomeTypeID");
@@ -193,10 +340,20 @@ namespace GNForm3C
                                 else
                                 {
                                     entACC_Income.IncomeID = Convert.ToInt32(Hdfiled.Value);
-                                    if (balACC_Income.Update(entACC_Income))
-                                    {
-                                        ucMessage.ShowSuccess(CommonMessage.RecordUpdated());
-                                    }
+                                    dtIncomeTable.Rows.Add(
+                                        entACC_Income.IncomeID,
+                                        entACC_Income.IncomeTypeID,
+                                        entACC_Income.Amount,
+                                        entACC_Income.IncomeDate,
+                                        entACC_Income.Note,
+                                        entACC_Income.Remarks,
+                                        entACC_Income.HospitalID,
+                                        entACC_Income.FinYearID,
+                                        entACC_Income.UserID,
+                                        entACC_Income.Created,
+                                        entACC_Income.Modified,
+                                        'U'
+                                        );
                                 }
 
                                 #endregion 15.1.2 Update Data
@@ -213,10 +370,26 @@ namespace GNForm3C
                                 else
                                 {
                                     entACC_Income.IncomeID = Convert.ToInt32(Hdfiled.Value);
-                                    if (balACC_Income.Delete(entACC_Income.IncomeID))
-                                    {
-                                        ucMessage.ShowSuccess(CommonMessage.DeletedRecord());
-                                    }
+                                    //if (balACC_Income.Delete(entACC_Income.IncomeID))
+                                    //{
+                                    //    ucMessage.ShowSuccess(CommonMessage.DeletedRecord());
+                                    //}
+
+                                    dtIncomeTable.Rows.Add(
+                                        entACC_Income.IncomeID,
+                                        entACC_Income.IncomeTypeID,
+                                        entACC_Income.Amount,
+                                        entACC_Income.IncomeDate,
+                                        entACC_Income.Note,
+                                        entACC_Income.Remarks,
+                                        entACC_Income.HospitalID,
+                                        entACC_Income.FinYearID,
+                                        entACC_Income.UserID,
+                                        entACC_Income.Created,
+                                        entACC_Income.Modified,
+                                        'D'
+                                        );
+
                                 }
 
                                 #endregion 15.1.3 Delete Data
@@ -237,27 +410,55 @@ namespace GNForm3C
                                 {
                                     if (ddlIncomeTypeID.Text.Trim() != string.Empty)
                                     {
-                                        if (balACC_Income.Insert(entACC_Income))
-                                        {
-                                            Div_ShowResult.Visible = false;
-                                            ucMessage.ShowSuccess(CommonMessage.RecordSaved());
-                                        }
+                                        //if (balACC_Income.Insert(entACC_Income))
+                                        //{
+                                        //    Div_ShowResult.Visible = false;
+                                        //    ucMessage.ShowSuccess(CommonMessage.RecordSaved());
+                                        //}
+                                        dtIncomeTable.Rows.Add(
+                                        entACC_Income.IncomeID,
+                                        entACC_Income.IncomeTypeID,
+                                        entACC_Income.Amount,
+                                        entACC_Income.IncomeDate,
+                                        entACC_Income.Note,
+                                        entACC_Income.Remarks,
+                                        entACC_Income.HospitalID,
+                                        entACC_Income.FinYearID,
+                                        entACC_Income.UserID,
+                                        entACC_Income.Created,
+                                        entACC_Income.Modified,
+                                        'I'
+                                        );
+
                                     }
                                 }
                                 #endregion  15.1.4 Insert Data
                             }
                         }
                         Div_ShowResult.Visible = false;
+
                     }
-                    catch (Exception ex)
+
+                    if (balACC_Income.Upsert(dtIncomeTable))
                     {
-                        ucMessage.ShowError(ex.Message);
+                        ucMessage.ShowSuccess(CommonMessage.RecordSaved());
+                        ClearControls();
                     }
+                    else
+                    {
+                        ucMessage.ShowError(balACC_Income.Message);
+                    }
+
                 }
-                ClearControls();
+                catch (Exception ex)
+                {
+                    ucMessage.ShowError(ex.Message);
+                }
+
             }
         }
 
+        #endregion 15.0 Save Button Event DataTable
         #endregion 15.0 Save Button Event
 
         #region 16.0 Clear Controls

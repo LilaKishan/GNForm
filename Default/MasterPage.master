@@ -437,7 +437,26 @@
                                             <span class="title">HospitalWise DateWise Expense</span>
                                         </a>
                                     </li>
-                                    
+                                    <li class="nav-item  ">
+                                        <a href='<%=ResolveClientUrl("~/AdminPanel/RPT/RPT_ACC_Income_Matrix.aspx") %>' class="nav-link ">
+                                            <span class="title">Income Matrix</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a href='<%=ResolveClientUrl("~/AdminPanel/RPT/RPT_FinYearWiseHospitalWiseIncomeExpenseList.aspx") %>' class="nav-link ">
+                                            <span class="title">FinYear Hospital IncomeExpense</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a href='<%=ResolveClientUrl("~/AdminPanel/RPT/RPT_PatientIDCard.aspx") %>' class="nav-link ">
+                                            <span class="title">Patient ICard</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a href='<%=ResolveClientUrl("~/AdminPanel/RPT/RPT_ACC_Ledger.aspx") %>' class="nav-link ">
+                                            <span class="title">ACC Ledger Hospital</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">

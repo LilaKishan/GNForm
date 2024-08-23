@@ -1,15 +1,19 @@
 ﻿using GNForm3C.DAL;
 using GNForm3C.ENT;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 
 namespace GNForm3C.BAL
 {
-    public abstract class MST_PatientBALBase
+    public abstract class MST_PatientBALBase:DataBaseConfig
     {
 
         #region Private Fields
@@ -65,23 +69,52 @@ namespace GNForm3C.BAL
 
         #region UpdateOperation
 
-        //public Boolean Update(ACC_GNTransactionENT entACC_GNTransaction)
-        //{
-        //    ACC_GNTransactionDAL dalACC_GNTransaction = new ACC_GNTransactionDAL();
-        //    if (dalACC_GNTransaction.Update(entACC_GNTransaction))
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        this.Message = dalACC_GNTransaction.Message;
-        //        return false;
-        //    }
-        //}
+        #region Update
 
+        public Boolean Update(MST_PatientENT entMST_GNPatient)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_MST_Patient_Update");
+
+                sqlDB.AddInParameter(dbCMD, "@PatientID", SqlDbType.Int, entMST_GNPatient.PatientID);
+                sqlDB.AddInParameter(dbCMD, "@PatientName", SqlDbType.NVarChar, entMST_GNPatient.PatientName);
+                sqlDB.AddInParameter(dbCMD, "@Age", SqlDbType.Int, entMST_GNPatient.Age);
+                sqlDB.AddInParameter(dbCMD, "@MobileNo", SqlDbType.NVarChar, entMST_GNPatient.MobileNo);
+                sqlDB.AddInParameter(dbCMD, "@DOB", SqlDbType.DateTime, entMST_GNPatient.DOB);
+                sqlDB.AddInParameter(dbCMD, "@PrimaryDesc", SqlDbType.NVarChar, entMST_GNPatient.PrimaryDesc);
+                sqlDB.AddInParameter(dbCMD, "@UserID", SqlDbType.Int, entMST_GNPatient.UserID);
+                sqlDB.AddInParameter(dbCMD, "@PatientPhotoPath", SqlDbType.NVarChar, entMST_GNPatient.PatientPhotoPath);
+                sqlDB.AddInParameter(dbCMD, "@Modified", SqlDbType.DateTime, entMST_GNPatient.Modified);
+
+                DataBaseHelper DBH = new DataBaseHelper();
+                DBH.ExecuteNonQuery(sqlDB, dbCMD);
+
+                //PatientID = entMST_GNPatient.PatientID;
+
+                return true;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return false;
+            }
+        }
+
+        #endregion Update
         #endregion UpdateOperation
 
-       
+
 
         #region DeleteOperation
 
@@ -170,5 +203,15 @@ namespace GNForm3C.BAL
         //    return dalMST_FinYear.SelectComboBox();
         //}
         #endregion
+
+        #region Report
+
+        public DataTable RPT_PatientIDCard()
+        {
+            MST_PatientDAL dalMST_Patient = new MST_PatientDAL();
+            return dalMST_Patient.RPT_PatientIDCard();
+        }
+
+        #endregion Report
     }
 }

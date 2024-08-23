@@ -206,7 +206,9 @@ namespace GNForm3C
         public static string CommonImagePath = "~/Images/defaultIcon.jpg";
         public static string NoImagePath = "~/Images/noimage.png";
         public static string FacultyNoImagePath = "~/Images/Faculty_NoImg.jpeg";
+        public static string DefaultNoImagePath = "~/Default/Images/profile_user.jpg";
         #endregion Default Images
+
 
         #region Default Units
         public static string DefaultHeightUnit = "ft";

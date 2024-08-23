@@ -87,10 +87,10 @@ public partial class AdminPanel_RPT_RPT_ACC_Income_Matrix : System.Web.UI.Page
     private void SetReportParameters()
     {
         String ReportTitle = "Income Report";
-        //DateTime PrintDate = DateTime.Now;
+        DateTime PageDate = DateTime.Now;
         ReportParameter rptReportTitle = new ReportParameter("ReportTitle", ReportTitle);
-        //ReportParameter rptPrintDate = new ReportParameter("PrintDate", PrintDate.ToString());
-        this.rvIncomeReport.LocalReport.SetParameters(new ReportParameter[] { rptReportTitle });
+        ReportParameter rptPageDate = new ReportParameter("PageDate", PageDate.ToString());
+        this.rvIncomeReport.LocalReport.SetParameters(new ReportParameter[] { rptReportTitle,rptPageDate });
     }
     #endregion SetReportParameters
 }

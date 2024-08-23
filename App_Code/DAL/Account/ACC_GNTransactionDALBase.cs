@@ -512,7 +512,75 @@ namespace GNForm3C.DAL
                 return null;
             }
         }
+        #region SelectByPK
 
+        public MST_PatientENT SelectByPK(SqlInt32 PatientID)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_MST_GNPatient_SelectByPK");
+
+                sqlDB.AddInParameter(dbCMD, "@PatientID", SqlDbType.Int, PatientID);
+
+                MST_PatientENT entMST_Patient = new MST_PatientENT();
+                DataBaseHelper DBH = new DataBaseHelper();
+                using (IDataReader dr = DBH.ExecuteReader(sqlDB, dbCMD))
+                {
+                    while (dr.Read())
+                    {
+                        if (!dr["PatientID"].Equals(System.DBNull.Value))
+                            entMST_Patient.PatientID = Convert.ToInt32(dr["PatientID"]);
+
+                        if (!dr["PatientName"].Equals(System.DBNull.Value))
+                            entMST_Patient.PatientName = Convert.ToString(dr["PatientName"]);
+
+                        if (!dr["Age"].Equals(System.DBNull.Value))
+                            entMST_Patient.Age = Convert.ToInt32(dr["Age"]);
+
+                        if (!dr["DOB"].Equals(System.DBNull.Value))
+                            entMST_Patient.DOB = Convert.ToDateTime(dr["DOB"]);
+
+                        if (!dr["MobileNo"].Equals(System.DBNull.Value))
+                            entMST_Patient.MobileNo = Convert.ToString(dr["MobileNo"]);
+
+                        if (!dr["PrimaryDesc"].Equals(System.DBNull.Value))
+                            entMST_Patient.PrimaryDesc = Convert.ToString(dr["PrimaryDesc"]);
+
+                        if (!dr["UserID"].Equals(System.DBNull.Value))
+                            entMST_Patient.UserID = Convert.ToInt32(dr["UserID"]);
+
+                        if (!dr["PatientPhotoPath"].Equals(System.DBNull.Value))
+                            entMST_Patient.PatientPhotoPath = Convert.ToString(dr["PatientPhotoPath"]);
+
+                        if (!dr["Created"].Equals(System.DBNull.Value))
+                            entMST_Patient.Created = Convert.ToDateTime(dr["Created"]);
+
+                        if (!dr["Modified"].Equals(System.DBNull.Value))
+                            entMST_Patient.Modified = Convert.ToDateTime(dr["Modified"]);
+
+                    }
+                }
+                return entMST_Patient;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return null;
+            }
+
+        }
+
+        #endregion SelectByPK
 
         #endregion SelectOperation
 
