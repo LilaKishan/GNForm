@@ -9,13 +9,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Web.UI.HtmlControls;
+using Newtonsoft.Json;
 
 public partial class AdminPanel_MasterDashboard_MasterDashboard2 : System.Web.UI.Page
 {
     #region 10.0 Local Variables
 
     static Int32 PageRecordSize = CV.PageRecordSize;//Size of record per page   
-
+    SqlInt32 FinYearID = SqlInt32.Null;
     #endregion 10.0 Local Variables
 
     #region 11.0 Page Load Event
@@ -27,7 +28,6 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard2 : System.Web.UI
             Response.Redirect(CV.LoginPageURL);
 
         #endregion 11.0 Check User Login
-
         if (!Page.IsPostBack)
         {
             #region 11.1 DropDown List Fill Section
@@ -48,15 +48,16 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard2 : System.Web.UI
             #endregion 12.3 Set Help Text
 
             BindData();
+            //ShowChart();
         }
     }
-
-
     #endregion 11.0 Page Load Event 
 
     #region 12.0 Search
     protected void BindData()
     {
+        //SqlInt32 FinYearID = SqlInt32.Null;
+
         MST_FinYearBAL balMST_FinYearBAL = new MST_FinYearBAL();
         DataTable dtFinYear = balMST_FinYearBAL.SelectComboBox();
 
@@ -66,9 +67,9 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard2 : System.Web.UI
 
         foreach (RepeaterItem rpAc in rpFinYear.Items)
         {
-            SqlInt32 FinYearID = SqlInt32.Null;
+            
             HiddenField hfFinYearID = (HiddenField)rpAc.FindControl("hdFinyearID");
-
+            
             if (hfFinYearID != null)
             {
                 FinYearID = Convert.ToInt32(hfFinYearID.Value);
@@ -97,6 +98,7 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard2 : System.Web.UI
 
 
         }
+
 
     }
     protected void displayChange(object sender, EventArgs e)
@@ -195,8 +197,8 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard2 : System.Web.UI
 
     }
     #endregion 13.3 BindHospitalWisePatientCountList
-    #region 13.4 BindAccountTranscationList
 
+    #region 13.4 BindAccountTranscationList
     private void BindAccountTranscationList(Repeater rp, SqlInt32 FinYearID)
     {
 
@@ -221,10 +223,29 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard2 : System.Web.UI
 
 
     }
-
-
     #endregion 13.4 BindAccountTranscationList
 
+    #region GetChartData
+    #region Chart
+
+    //public void ShowChart()
+    //{
+    //    var chartData = GetChartData();
+    //    var jsonData = JsonConvert.SerializeObject(chartData);
+    //    ClientScript.RegisterStartupScript(this.GetType(), "chartData", "var chartData = " + jsonData + ";", true);
+    //}
+    public DataTable GetChartData(SqlInt32 finYearID)
+    {
+        // SqlInt32 FinYearID = SqlInt32.Null;
+
+        MST_DSB2BAL balMST_DSB2 = new MST_DSB2BAL();
+        DataTable dtchartData = balMST_DSB2.IncomeExpenseSumHospitalWise(finYearID);
+
+
+        return dtchartData;
+    }
+    #endregion Chart
+    #endregion Gatherdata Chart
     #endregion BindTable
 
     #region 14.0 DropDownList
@@ -237,8 +258,23 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard2 : System.Web.UI
 
     #endregion 14.0 DropDownList
 
-    public void rpData_OnItemDataBound(object sender, EventArgs e)
+    public void rpData_OnItemDataBound(object sender, RepeaterItemEventArgs e)
     {
-        SqlInt32 FinYearID = SqlInt32.Null;
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            // Find the HiddenField control in the current item
+            HiddenField hdFinyearID = (HiddenField)e.Item.FindControl("hdFinyearID");
+
+            // Get the FinYearID value from the HiddenField
+            SqlInt32 finYearID = Convert.ToInt32(hdFinyearID.Value);
+
+            // Fetch chart data specific to the repeater item
+            var chartData = GetChartData(finYearID);
+            var jsonData = JsonConvert.SerializeObject(chartData);
+
+            // Create a unique chartData variable for each repeater item
+            ClientScript.RegisterStartupScript(this.GetType(), "chartData_" + e.Item.ItemIndex,
+                "var chartData_" + e.Item.ItemIndex + " = " + jsonData + ";", true);
+        }
     }
 }

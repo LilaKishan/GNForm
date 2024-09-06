@@ -44,18 +44,19 @@
                                                         <i class="fa fa-h-square "></i></i>  <%# Eval("FinYearName") %>
                                                     </div>
                                                     <div class="tools">
-                                                        <a href="javascript:;"class='<%# Container.ItemIndex == 0 ? "collapse" : "expand" %>'  data-original-title="" title=""></a>
+                                                        <a href="javascript:;" class='<%# Container.ItemIndex == 0 ? "collapse" : "expand" %>' data-original-title="" title=""></a>
                                                     </div>
                                                 </div>
-                                                <div class="portlet-body" style='<%# Container.ItemIndex == 0 ? "display: block;" : "display: none;" %>'>
+                                                <div class="portlet-body" style='<%# Container.ItemIndex == 0 ? "display: block;": "display: none;" %>'>
                                                     <div class="row">
-                                                        <div class="col-md-12"> 
+                                                        <div class="col-md-12">
                                                             <div class="portlet light">
                                                                 <div class="portlet-title">
                                                                     <div class="caption font-green">
                                                                         <i class="fa fa-line-chart font-green"></i>
                                                                         <span class="caption-subject bold uppercase">Total Overview</span>
                                                                     </div>
+
                                                                     <div class="tools"></div>
                                                                 </div>
                                                                 <div class="portlet-body form">
@@ -111,6 +112,28 @@
                                                             </div>
 
                                                         </div>
+                                                        <div class="col-md-12">
+                                                            <div class="portlet light">
+                                                                <div class="portlet-title">
+                                                                    <div class="caption font-green">
+                                                                        <i class="fa fa-line-chart font-green"></i>
+                                                                        <span class="caption-subject bold uppercase">Chart</span>
+                                                                    </div>
+                                                                    <div class="tools"></div>
+                                                                </div>
+                                                                <div class="portlet-body form">
+                                                                    <div class="form-horizontal" role="form">
+                                                                        <div class="form-body">
+                                                                            <div class="row">
+                                                                                <div class="col">
+                                                                                    <div id="chart_div_<%# Container.ItemIndex %>"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="Col-md-12">
                                                             <div class="tools ">
                                                                 <ul class="nav nav-tabs">
@@ -124,7 +147,7 @@
                                                                         <asp:LinkButton ID="LinkButton4" runat="server" href=' <%# "#tab_Inc_HospitalWisePatientCountList" + Eval("FinYearID") %>' Text="HospitalWisePatientCountList" data-toggle="tab"></asp:LinkButton>
                                                                     </li>
                                                                     <li class="">
-                                                                        <asp:LinkButton ID="LinkButton1" runat="server" href=' <%# "#tab_Inc_AccountTranscationList" +  Eval("FinYearID") %>'  Text="AccountTranscationList" data-toggle="tab"></asp:LinkButton>
+                                                                        <asp:LinkButton ID="LinkButton1" runat="server" href=' <%# "#tab_Inc_AccountTranscationList" +  Eval("FinYearID") %>' Text="AccountTranscationList" data-toggle="tab"></asp:LinkButton>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -136,8 +159,8 @@
                                                                             <div class="tab-pane active" id='tab_Inc_CategoryWiseIncomeTotalList<%# Eval("FinYearID") %>'>
                                                                                 <asp:Label ID="lblNoCategoryWiseIncomeTotalListRecords" runat="server" Text="No Records Found" Visible="false" CssClass="text-danger" />
 
-                                                                                <div >
-                                                                                    <table  class="table table-bordered table-advanced table-striped table-hover" id="CategoryWiseIncomeTotalList">
+                                                                                <div>
+                                                                                    <table class="table table-bordered table-advanced table-striped table-hover" id="CategoryWiseIncomeTotalList">
                                                                                         <%-- Table Header --%>
                                                                                         <thead>
                                                                                             <tr class="TRDark">
@@ -182,9 +205,9 @@
                                                                             <div class="tab-pane" id='tab_Inc_CategoryWiseExpenseTotalList<%# Eval("FinYearID") %>'>
                                                                                 <asp:Label ID="lblNoCategoryWiseExpenseTotalListRecords" runat="server" Text="No Records Found" Visible="false" CssClass="text-danger" />
 
-                                                                                <div >
+                                                                                <div>
 
-                                                                                    <table  class="table table-bordered table-advanced table-striped table-hover" id="CategoryWiseExpenseTotalList">
+                                                                                    <table class="table table-bordered table-advanced table-striped table-hover" id="CategoryWiseExpenseTotalList">
                                                                                         <%-- Table Header --%>
                                                                                         <thead>
                                                                                             <tr class="TRDark">
@@ -224,14 +247,14 @@
                                                                                         </tbody>
                                                                                     </table>
                                                                                 </div>
-                                                                            </div>
 
+                                                                            </div>
                                                                             <div class="tab-pane" id='tab_Inc_HospitalWisePatientCountList<%# Eval("FinYearID") %>'>
                                                                                 <asp:Label ID="lblNoHospitalWisePatientCountListRecords" runat="server" Text="No Records Found" Visible="false" CssClass="text-danger" />
 
-                                                                                <div >
+                                                                                <div>
 
-                                                                                    <table  class="table table-bordered table-advanced table-striped table-hover" id="HospitalWisePatientCountList">
+                                                                                    <table class="table table-bordered table-advanced table-striped table-hover" id="HospitalWisePatientCountList">
                                                                                         <%-- Table Header --%>
                                                                                         <thead>
                                                                                             <tr class="TRDark">
@@ -273,10 +296,8 @@
                                                                             </div>
                                                                             <div class="tab-pane" id='tab_Inc_AccountTranscationList<%# Eval("FinYearID") %>'>
                                                                                 <asp:Label ID="lblNoAccountTranscationListRecords" runat="server" Text="No Records Found" Visible="false" CssClass="text-danger" />
-
-                                                                                <div >
-
-                                                                                    <table  class="table table-bordered table-advanced table-striped table-hover" id="AccountTranscationList">
+                                                                                <div>
+                                                                                    <table class="table table-bordered table-advanced table-striped table-hover" id="AccountTranscationList">
                                                                                         <%-- Table Header --%>
                                                                                         <thead>
                                                                                             <tr class="TRDark">
@@ -408,6 +429,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -436,4 +458,45 @@
     <%-- END Loading  --%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphScripts" runat="Server">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        function drawChart(containerId, chartData) {
+            var dataTable = new google.visualization.DataTable();
+            dataTable.addColumn('string', 'Hospital');
+            dataTable.addColumn('number', 'TotalIncome');
+            dataTable.addColumn('number', 'TotalExpense');
+
+            var data = chartData.map(function (row) {
+                return [row.Hospital, row.TotalIncome, row.TotalExpense];
+            });
+            dataTable.addRows(data);
+
+            var options = {
+                title: 'Income and Expense by Hospital',
+                hAxis: { title: 'Hospital', titleTextStyle: { color: '#333' } },
+                vAxis: { title: 'Amount', minValue: 0 },
+                legend: { position: 'top' },
+                bars: 'vertical', // Set the orientation of the bars
+                height: 1000,
+                // Set the maximum height of the chart (in pixels)
+                //    chartArea: { width: '90%', height: '80%' } // Adjust the chart area inside the container
+            };
+
+
+            var chart = new google.visualization.ColumnChart(document.getElementById(containerId));
+            chart.draw(dataTable, options);
+        }
+
+        // Call this function after the page loads or repeater items are bound
+        function drawChartsForAllHospitals() {
+            <% for (int i = 0; i < rpFinYear.Items.Count; i++)
+        { %>
+            drawChart('chart_div_<%= i %>', chartData_<%= i %>); // Use unique chartData for each chart
+            <% } %>
+        }
+
+        google.charts.setOnLoadCallback(drawChartsForAllHospitals);
+    </script>
 </asp:Content>

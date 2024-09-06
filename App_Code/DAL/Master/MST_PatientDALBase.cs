@@ -9,10 +9,11 @@ using System.Data.SqlTypes;
 using System.Data;
 using System.Linq;
 using System.Web;
+using AjaxControlToolkit;
 
 namespace GNForm3C.DAL
 {
-    public abstract class  MST_PatientDALBase: DataBaseConfig
+    public abstract class MST_PatientDALBase : DataBaseConfig
     {
         #region Properties
 
@@ -288,7 +289,7 @@ namespace GNForm3C.DAL
                         if (!dr["PatientID"].Equals(System.DBNull.Value))
                             entMST_Patient.PatientID = Convert.ToInt32(dr["PatientID"]);
 
-                    
+
                         if (!dr["PatientName"].Equals(System.DBNull.Value))
                             entMST_Patient.PatientName = Convert.ToString(dr["PatientName"]);
 
@@ -304,7 +305,7 @@ namespace GNForm3C.DAL
                         if (!dr["PrimaryDesc"].Equals(System.DBNull.Value))
                             entMST_Patient.PrimaryDesc = Convert.ToString(dr["PrimaryDesc"]);
 
-                        
+
                         if (!dr["UserID"].Equals(System.DBNull.Value))
                             entMST_Patient.UserID = Convert.ToInt32(dr["UserID"]);
 
@@ -364,8 +365,41 @@ namespace GNForm3C.DAL
                 return null;
             }
         }
-    
 
+        #region AutoComplete
+
+        public DataTable AutoComplete(SqlString TxtSearch, SqlString TxtContext)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_MST_Patient_AutoComplete");
+                sqlDB.AddInParameter(dbCMD, "@TxtSearch", SqlDbType.NVarChar, TxtSearch);
+                sqlDB.AddInParameter(dbCMD, "@TxtContext", SqlDbType.NVarChar, TxtContext);
+
+                DataTable dtMST_Patient = new DataTable("PR_MST_Patient_AutoComplete");
+
+                DataBaseHelper DBH = new DataBaseHelper();
+                DBH.LoadDataTable(sqlDB, dbCMD, dtMST_Patient);
+
+                return dtMST_Patient;
+            }
+            catch (SqlException sqlex)
+            {
+                Message = SQLDataExceptionMessage(sqlex);
+                if (SQLDataExceptionHandler(sqlex))
+                    throw;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Message = ExceptionMessage(ex);
+                if (ExceptionHandler(ex))
+                    throw;
+                return null;
+            }
+        }
+        #endregion AutoComplete
         #endregion SelectOperation
 
         #region SelectCombobox

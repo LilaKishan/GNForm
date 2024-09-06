@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default/MasterPage.master" AutoEventWireup="true" CodeFile="ACC_GNTransactionList.aspx.cs" Inherits="AdminPanel_Account_ACC_GNTransaction_ACC_GNTransaction" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphPageHeader" runat="Server">
@@ -205,7 +207,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -216,7 +217,34 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                            <asp:TextBox ID="txtACEPatientName" CssClass="form-control" runat="server" PlaceHolder="Enter Patient"  ></asp:TextBox>
+                                           
+                                            <asp:AutoCompleteExtender
+                                                ID="acePatientName"
+                                                runat="server"
+                                                TargetControlID="txtACEPatientName"
+                                                ServiceMethod="GetPatientList"
+                                                ServicePath="~/WebServices/WebService_MST_Patient.asmx"
+                                                MinimumPrefixLength="2"
+                                                CompletionSetCount="10"
+                                                CompletionListCssClass="list-group fix-height"
+                                                CompletionListItemCssClass="list-group-item"
+                                                CompletionListHighlightedItemCssClass="list-group-item bg-grey hover-cursor"
+                                                FirstRowSelected="true"
+                                                DelimiterCharacters=""
+                                                EnableCaching="false"
+                                                OnClientItemSelected="ClientItemSelectedPatient">
+                                            </asp:AutoCompleteExtender>
+                                             <asp:HiddenField ID="hfPatientID" runat="server"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <%--<div class="row">
 							
@@ -507,5 +535,10 @@
         });
 
         SearchGridUI('<%=btnSearch.ClientID%>', 'sample_1', 1);
+
+
+        function ClientItemSelectedPatient(sender, e) {
+            $(<%= hfPatientID.ClientID %>).val(e.get_value().split(' - ')[0]);
+        }
     </script>
 </asp:Content>

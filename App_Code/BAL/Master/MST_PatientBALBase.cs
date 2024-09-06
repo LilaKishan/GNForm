@@ -133,7 +133,13 @@ namespace GNForm3C.BAL
         //}
 
         #endregion DeleteOperation
-
+        #region AutoComplete
+        public DataTable AutoComplete(SqlString prefixText, SqlString contextText)
+        {
+            MST_PatientDAL dalMST_Patient = new MST_PatientDAL();
+            return dalMST_Patient.AutoComplete(prefixText, contextText);
+        }
+        #endregion AutoComplete
         #region SelectOperation
 
         public MST_PatientENT SelectPK(SqlInt32 PatientID)

@@ -80,10 +80,24 @@ namespace GNForm3C.BAL
 
         #region UpsertOperation
 
-        public Boolean Upsert(DataTable dtIncomeTable)
+        //public Boolean Upsert(DataTable dtIncomeTable)
+        //{
+        //    ACC_IncomeDAL dalACC_Income = new ACC_IncomeDAL();
+        //    if (dalACC_Income.Upsert(dtIncomeTable))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        this.Message = dalACC_Income.Message;
+        //        return false;
+        //    }
+        //}
+        #region UpsertOpration XML
+        public Boolean Upsert(string xmlData)
         {
             ACC_IncomeDAL dalACC_Income = new ACC_IncomeDAL();
-            if (dalACC_Income.Upsert(dtIncomeTable))
+            if (dalACC_Income.Upsert(xmlData))
             {
                 return true;
             }
@@ -94,6 +108,8 @@ namespace GNForm3C.BAL
             }
         }
 
+
+        #endregion UpsertOpration XML
         #endregion UpsertOperation
 
         #region DeleteOperation

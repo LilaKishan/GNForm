@@ -130,15 +130,46 @@ namespace GNForm3C.DAL
         #region UpsertOperation
         //This is extra method
 
-        public Boolean Upsert(DataTable dtIncomeTable)
+        //public Boolean Upsert(DataTable dtIncomeTable)
+        //{
+        //    try
+        //    {
+        //        SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+        //        DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_ACC_Income_Upsert");
+
+        //        sqlDB.AddInParameter(dbCMD, "@dtIncomeTable", SqlDbType.Structured, dtIncomeTable);
+
+
+        //        DataBaseHelper DBH = new DataBaseHelper();
+        //        DBH.ExecuteNonQuery(sqlDB, dbCMD);
+
+        //        return true;
+        //    }
+        //    catch (SqlException sqlex)
+        //    {
+        //        Message = SQLDataExceptionMessage(sqlex);
+        //        if (SQLDataExceptionHandler(sqlex))
+        //            throw;
+        //        return false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Message = ExceptionMessage(ex);
+        //        if (ExceptionHandler(ex))
+        //            throw;
+        //        return false;
+        //    }
+        //}
+        #region UpsertOpration XML
+
+        public Boolean Upsert(string xmlData)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_ACC_Income_Upsert");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_ACC_Income_Upsert_XML");
 
-                sqlDB.AddInParameter(dbCMD, "@dtIncomeTable", SqlDbType.Structured, dtIncomeTable);
-
+                sqlDB.AddInParameter(dbCMD, "@xmlData", SqlDbType.Xml, xmlData);
 
                 DataBaseHelper DBH = new DataBaseHelper();
                 DBH.ExecuteNonQuery(sqlDB, dbCMD);
@@ -161,6 +192,8 @@ namespace GNForm3C.DAL
             }
         }
 
+
+        #endregion UpsertOpration XML
         #endregion UpsertOperation
 
         #region DeleteOperation

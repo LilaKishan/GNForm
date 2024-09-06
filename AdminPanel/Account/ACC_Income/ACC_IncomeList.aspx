@@ -173,6 +173,12 @@
 
                                                         <asp:Label ID="lbldelete" runat="server" Text="SelectAll"></asp:Label>
                                                     </th>
+                                                    <th class="text-center">
+                                                        <asp:Label ID="lbhFinYearID" runat="server" Text="Fin Year"></asp:Label>
+                                                    </th>
+                                                    <th>
+                                                        <asp:Label ID="lbhHospitalID" runat="server" Text="Hospital"></asp:Label>
+                                                    </th>
                                                     <th>
                                                         <asp:Label ID="lbhIncomeTypeID" runat="server" Text="Income Type"></asp:Label>
                                                     </th>
@@ -182,12 +188,8 @@
                                                     <th class="text-center">
                                                         <asp:Label ID="lbhIncomeDate" runat="server" Text="Income Date"></asp:Label>
                                                     </th>
-                                                    <th>
-                                                        <asp:Label ID="lbhHospitalID" runat="server" Text="Hospital"></asp:Label>
-                                                    </th>
-                                                    <th>
-                                                        <asp:Label ID="lbhFinYearID" runat="server" Text="Fin Year"></asp:Label>
-                                                    </th>
+
+
                                                     <th class="nosortsearch text-nowrap text-center">
                                                         <asp:Label ID="lbhAction" runat="server" Text="Action"></asp:Label>
                                                     </th>
@@ -203,21 +205,21 @@
                                                                 <asp:HiddenField ID="hfID" runat="server" Value='<%# Eval("IncomeID") %>' />
                                                                 <asp:CheckBox ID="chkSelect" runat="server" />
                                                             </td>
+                                                            <td class="text-center">
+                                                                <%#Eval("FinYearName") %>
+                                                            </td>
+                                                            <td>
+                                                                <%#Eval("Hospital") %>
+                                                            </td>
                                                             <td>
                                                                 <asp:HyperLink ID="hlViewIncomeID" NavigateUrl='<%# "~/AdminPanel/Account/ACC_Income/ACC_IncomeView.aspx?IncomeID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("IncomeID").ToString()) %>' data-target="#viewiFrameReg" CssClass="modalButton" data-toggle="modal" runat="server"><%#Eval("IncomeType") %></asp:HyperLink>
                                                             </td>
                                                             <td class="text-right">
                                                                 <%#Eval("Amount",GNForm3C.CV.DefaultCurrencyFormatWithDecimalPoint) %>
-                                                        </td>
+                                                             </td>
                                                             <td class="text-center">
                                                                 <%#Eval("IncomeDate", GNForm3C.CV.DefaultDateFormatForGrid) %>
-                                                        </td>
-                                                            <td>
-                                                                <%#Eval("Hospital") %>
-                                                        </td>
-                                                            <td>
-                                                                <%#Eval("FinYearName") %>
-                                                        </td>
+                                                            </td>
                                                             <td class="text-nowrap text-center">
                                                                 <asp:HyperLink ID="hlView" SkinID="View" NavigateUrl='<%# "~/AdminPanel/Account/ACC_Income/ACC_IncomeView.aspx?IncomeID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("IncomeID").ToString()) %>' data-target="#viewiFrameReg" data-toggle="modal" runat="server"></asp:HyperLink>
                                                                 <asp:HyperLink ID="hlEdit" SkinID="Edit" NavigateUrl='<%# "~/AdminPanel/Account/ACC_Income/ACC_IncomeAddEdit.aspx?IncomeID=" + GNForm3C.CommonFunctions.EncryptBase64(Eval("IncomeID").ToString()) %>' runat="server"></asp:HyperLink>
@@ -226,7 +228,7 @@
                                                                     OnClientClick="javascript:return confirm('Are you sure you want to delete record ? ');"
                                                                     CommandName="DeleteRecord"
                                                                     CommandArgument='<%#Eval("IncomeID") %>'>
-                                                            </asp:LinkButton>
+                                                                </asp:LinkButton>
                                                             </td>
                                                         </tr>
                                                     </ItemTemplate>

@@ -139,19 +139,19 @@
                                             <thead>
                                                 <tr class="TRDark">
                                                     <th>
-                                                        <asp:Label ID="lbhExpenseTypeID" runat="server" Text="Expense Type"></asp:Label>
+                                                        <asp:Label ID="lbhFinYearID" runat="server" Text="Fin Year"></asp:Label>
                                                     </th>
-                                                    <th class="text-right">
-                                                        <asp:Label ID="lbhAmount" runat="server" Text="Amount"></asp:Label>
+                                                    <th>
+                                                        <asp:Label ID="lbhHospitalID" runat="server" Text="Hospital"></asp:Label>
                                                     </th>
                                                     <th class="text-center">
                                                         <asp:Label ID="lbhExpenseDate" runat="server" Text="Expense Date"></asp:Label>
                                                     </th>
                                                     <th>
-                                                        <asp:Label ID="lbhHospitalID" runat="server" Text="Hospital"></asp:Label>
+                                                        <asp:Label ID="lbhExpenseTypeID" runat="server" Text="Expense Type"></asp:Label>
                                                     </th>
-                                                    <th>
-                                                        <asp:Label ID="lbhFinYearID" runat="server" Text="Fin Year"></asp:Label>
+                                                    <th class="text-right">
+                                                        <asp:Label ID="lbhAmount" runat="server" Text="Amount"></asp:Label>
                                                     </th>
                                                     <th>
                                                         <asp:Label ID="lbhTagName" runat="server" Text="TagName"></asp:Label>

@@ -188,7 +188,7 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard : System.Web.UI.
     }
     #endregion 14.0 Show Button Event
 
-    #region 15.0 GridView Row Data Bound for Expense
+    #region 15.0 GridView Row Data Bound for Income
     protected void IncomeList_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
@@ -271,4 +271,6 @@ public partial class AdminPanel_MasterDashboard_MasterDashboard : System.Web.UI.
     }
 
     #endregion 17.0 ClearControls
+
+
 }

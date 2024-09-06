@@ -137,7 +137,10 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransaction : Sy
 
         //if (txtPatient.Text.Trim() != String.Empty)
         //    PatientID = txtPatient.Text.Trim();
-
+        var selectedPatientID = hfPatientID.Value;
+        int patientID; // Declare the variable separately
+        if (int.TryParse(selectedPatientID, out patientID) && txtACEPatientName.Text.Trim() != String.Empty)
+            PatientID = patientID;
         if (ddlPatientID.SelectedIndex > 0)
             PatientID = Convert.ToInt32(ddlPatientID.SelectedValue);
 
@@ -254,7 +257,10 @@ public partial class AdminPanel_Account_ACC_GNTransaction_ACC_GNTransaction : Sy
 
         }
     }
-
+    protected void OnTextChanged_txtPatientID(object sender, EventArgs e)
+    {
+        hfPatientID.Value = string.Empty;
+    }
     #endregion 15.2 Search Function
 
     #endregion 15.0 Search

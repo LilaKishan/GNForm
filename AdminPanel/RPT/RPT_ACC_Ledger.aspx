@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div>
-                <rsweb:ReportViewer ID="rvLedger" runat="server" Width="100%" Height="800px" Visible="false" >
+                <rsweb:ReportViewer ID="rvLedger" runat="server" Width="100%" Height="800px" Visible="false">
                     <LocalReport ReportPath="D:\GNWebsoft\GNWebForm3C_CodeB\AdminPanel\RPT\RPT_ACC_Ledger.rdlc"></LocalReport>
                 </rsweb:ReportViewer>
             </div>
@@ -158,29 +158,27 @@
                                     <div id="TableContent">
                                         <table class="table table-bordered table-advanced table-striped table-hover" id="sample_1">
                                             <%-- Table Header --%>
+
                                             <thead>
                                                 <tr class="TRDark">
-                                                    <th>
-                                                        <asp:Label ID="lbhFinYearID" runat="server" Text="Fin Year"></asp:Label>
+                                                    <th class="text-center" style="vertical-align: middle;" rowspan="2">
+                                                        <asp:Label ID="lbhTransactionDate" runat="server" Text="Date"></asp:Label>
                                                     </th>
-                                                    <th>
-                                                        <asp:Label ID="lbhHospitalID" runat="server" Text="Hospital"></asp:Label>
+                                                    <th colspan="2" class="text-center">
+                                                        <asp:Label ID="Particulars" runat="server" Text="Particulars"></asp:Label>
                                                     </th>
-                                                    <th class="text-center">
-                                                        <asp:Label ID="lbhTransactionDate" runat="server" Text="Transaction Date"></asp:Label>
-                                                    </th>
-                                                    <th class="text-center">
-                                                        <asp:Label ID="lbhTransactionType" runat="server" Text="Transaction Type"></asp:Label>
-                                                    </th>
-                                                    <th class="text-center">
-                                                        <asp:Label ID="Income" runat="server" Text="Income Amount"></asp:Label>
-                                                    </th>
-                                                    <th class="text-center">
-                                                        <asp:Label ID="Expense" runat="server" Text="Expense Amount"></asp:Label>
-                                                    </th>
-                                                    <th class="text-center">
+                                                    <th class="text-right" style="vertical-align: middle;" rowspan="2">
                                                         <asp:Label ID="lbhBalance" runat="server" Text="Balance"></asp:Label>
                                                     </th>
+                                                </tr>
+                                                <tr class="TRDark">
+                                                    <th class="text-center">
+                                                        <asp:Label ID="Income" runat="server" Text="Income"></asp:Label>
+                                                    </th>
+                                                    <th class="text-center">
+                                                        <asp:Label ID="Expense" runat="server" Text="Expense"></asp:Label>
+                                                    </th>
+
                                                 </tr>
                                             </thead>
                                             <%-- END Table Header --%>
@@ -190,20 +188,20 @@
                                                     <ItemTemplate>
                                                         <%-- Table Rows --%>
                                                         <tr class="odd gradeX">
-                                                            <td>
+                                                            <%--<td>
                                                                 <%#Eval("FinYearName") %>
                                                             </td>
                                                             <td>
                                                                 <%#Eval("Hospital") %>
-                                                            </td>
+                                                            </td>--%>
                                                             <td class="text-center">
                                                                 <%#Eval("TransactionDate", GNForm3C.CV.DefaultDateFormatForGrid) %>
                                                               </td>
-                                                            <td class="text-center">
+                                                            <%--<td class="text-center">
                                                                 <span style='<%# Eval("TransactionType").ToString() == "Income" ? "color:green;": "color:red;" %>'>
                                                                     <%# Eval("TransactionType") %>
                                                                 </span>
-                                                            </td>
+                                                            </td>--%>
                                                             <td class="text-center">
                                                                 <span style="color: green;">
                                                                     <%# Eval("IncomeType") %>
@@ -224,7 +222,7 @@
                                                             </td>
 
                                                             <td class="text-right">
-                                                                <span style='<%# Eval("TransactionType").ToString() == "Income" ? "color:green;": "color:red;" %>'>
+                                                                <span style='<%# Eval("TransactionType").ToString() == "Income" ? "color:green;": "color:red;" %>' >
                                                                     <%# Eval("Balance") %>
                                                                 </span>
                                                             </td>
@@ -238,7 +236,7 @@
                                     </div>
 
                                     <%-- Pagination --%>
-                                    <div class="row">
+                                    <%--<div class="row">
                                         <div class="col-md-4">
                                             <label class="control-label">
                                                 <asp:Label ID="lblRecordInfoBottom" Text="No entries found" runat="server">
@@ -249,7 +247,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                    </div>
+                                    </div>--%>
                                     <%-- END Pagination --%>
                                 </div>
                             </div>

@@ -80,9 +80,10 @@ public partial class AdminPanel_ACC_Income_ACC_IncomeList : System.Web.UI.Page
     {
 
         CommonFillMethods.FillDropDownListHospitalID(ddlHospitalID);
+        CommonFillMethods.FillSingleDropDownListIncomeTypeID(ddlIncomeTypeID);
 
-        ddlFinYearID.Items.Insert(0, new ListItem("Select Fin Year", "-99"));
-        ddlIncomeTypeID.Items.Insert(0, new ListItem("Select Fin Year", "-99"));
+        ddlFinYearID.Items.Insert(0, new ListItem("Select Fin Year", "-99"));   
+        //ddlIncomeTypeID.Items.Insert(0, new ListItem("Select IncomeT", "-99"));
         CommonFunctions.GetDropDownPageSize(ddlPageSizeBottom);
         ddlPageSizeBottom.SelectedValue = PageRecordSize.ToString();
     }
@@ -547,6 +548,5 @@ public partial class AdminPanel_ACC_Income_ACC_IncomeList : System.Web.UI.Page
         Search(currentPage);
     }
     #endregion
-
 
 }
