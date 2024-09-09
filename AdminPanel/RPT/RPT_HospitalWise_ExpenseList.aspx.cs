@@ -1,23 +1,20 @@
 ﻿using GNForm3C.BAL;
 using GNForm3C;
-using Microsoft.Reporting.Map.WebForms.BingMaps;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Data;
 using Microsoft.Reporting.WebForms;
 
 public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI.Page
 {
-    #region 11.0 Varible
+
     private DataTable dtACC_Expense = new DataTable("dtACC_Expense");
     private dsACC_Expense objdsACC_Expense = new dsACC_Expense();
-    #endregion 11.0 Varible
 
     #region 12.0 Page Load Event
 
@@ -47,7 +44,7 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
             SetDefaultDateTime();
 
             #endregion 12.2 Set Default Value
-            Search(1);
+
 
             #region 12.3 Set Help Text
             ucHelp.ShowHelp("Help Text will be shown here");
@@ -71,7 +68,7 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
 
     private void FillDropDownList()
     {
-
+        CommonFillMethods.FillDropDownListHospitalID(ddlHospitalID);
     }
 
     #endregion 14.1 Fill DropDownList
@@ -98,7 +95,8 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
 
         SqlDateTime FromDate = SqlDateTime.Null;
         SqlDateTime ToDate = SqlDateTime.Null;
-        SqlInt32 HospitalID=SqlInt32.Null;
+        SqlInt32 HospitalID = SqlInt32.Null;
+
         #endregion Parameters
 
         #region Gather Data
@@ -109,39 +107,66 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
         if (dtpFromDate.Text.Trim() != String.Empty)
             ToDate = Convert.ToDateTime(dtpToDate.Text);
 
+        if (ddlHospitalID.SelectedIndex > 0)
+            HospitalID = Convert.ToInt32(ddlHospitalID.SelectedValue);
 
 
         #endregion Gather Data
 
-        ACC_ExpenseBAL balACC_Expense = new ACC_ExpenseBAL();
-
-        dtACC_Expense = balACC_Expense.SelectReportPage(HospitalID,FromDate, ToDate);
-
-
-        if (dtACC_Expense != null && dtACC_Expense.Rows.Count > 0)
+        if (FromDate < ToDate)
         {
-            Div_SearchResult.Visible = true;
-            Div_ExportOption.Visible = true;
-            rpData.DataSource = dtACC_Expense;
-            rpData.DataBind();
+            ACC_ExpenseBAL balACC_Expense = new ACC_ExpenseBAL();
 
-            //lblRecordInfoBottom.Text = String.Empty;
-            lblRecordInfoTop.Text = String.Empty;
+            dtACC_Expense = balACC_Expense.SelectReportPage(HospitalID, FromDate, ToDate);
 
+
+            if (dtACC_Expense != null && dtACC_Expense.Rows.Count > 0)
+            {
+
+                var groupedData = dtACC_Expense.AsEnumerable()
+                .GroupBy(row => row.Field<DateTime>("ExpenseDate"))
+                .Select(g => new
+                {
+                    ExpenseDate = g.Key,
+                    Details = g.CopyToDataTable(),
+                    TotalAmount = g.Sum(row => row.Field<decimal>("Amount"))
+                }).ToList();
+
+                rptGroupedExpenses.DataSource = groupedData;
+                rptGroupedExpenses.DataBind();
+
+                Div_SearchResult.Visible = true;
+                //Div_ExportOption.Visible = true;
+                //rpData.DataSource = dtACC_Expense;
+                //rpData.DataBind();
+
+                //lblRecordInfoBottom.Text = String.Empty;
+                lblRecordInfoTop.Text = String.Empty;
+                ShowReport();
+
+            }
+            else
+            {
+
+                //rpData.DataSource = null;
+                //rpData.DataBind();
+                //lblRecordInfoBottom.Text = CommonMessage.NoRecordFound();
+                lblRecordInfoTop.Text = CommonMessage.NoRecordFound();
+                ucMessage.ShowError(CommonMessage.NoRecordFound());
+            }
         }
         else
         {
+            Div_SearchResult.Visible = false;
+            //lbtnExcel.Visible = false;
 
-            rpData.DataSource = null;
-            rpData.DataBind();
-            //lblRecordInfoBottom.Text = CommonMessage.NoRecordFound();
-            lblRecordInfoTop.Text = CommonMessage.NoRecordFound();
 
-            ucMessage.ShowError(CommonMessage.NoRecordFound());
+            //rpData.DataSource = null;
+            //rpData.DataBind();
+
+            ucMessage.ShowError(CommonMessage.ToDate_GreaterThan_FromDate());
         }
-        ShowReport();
     }
-
     #endregion 15.2 Search Function
 
     #endregion 15.0 Search
@@ -155,13 +180,13 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
 
     #endregion 16.0 Repeater Events
 
-    #region ItemDataBound Event
+    #region 17.0 ItemDataBound Event
 
-    #endregion ItemDataBound Event
+    #endregion 17.0 ItemDataBound Event
 
-    #region 19.0 Export Data
+    #region 18.0 Export Data
 
-    #region 19.1 Excel Export Button Click Event
+    #region 18.1 Excel Export Button Click Event
 
     protected void lbtnExport_Click(object sender, EventArgs e)
     {
@@ -183,12 +208,16 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
         if (dtpFromDate.Text.Trim() != String.Empty)
             ToDate = Convert.ToDateTime(dtpToDate.Text);
 
+        if (ddlHospitalID.SelectedIndex > 0)
+            HospitalID = Convert.ToInt32(ddlHospitalID.SelectedValue);
+
+
 
         #endregion Gather Data
 
         ACC_ExpenseBAL balACC_Expense = new ACC_ExpenseBAL();
 
-        dtACC_Expense = balACC_Expense.SelectReportPage(HospitalID,FromDate, ToDate);
+        dtACC_Expense = balACC_Expense.SelectReportPage(HospitalID, FromDate, ToDate);
         if (dtACC_Expense != null && dtACC_Expense.Rows.Count > 0)
         {
             ExportReport(ExportType);
@@ -200,10 +229,16 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
         try
         {
             string mimeType, encoding, extension;
-            Microsoft.Reporting.WebForms.Warning[] warnings;
+            Warning[] warnings;
             string[] streamIds;
 
-            byte[] bytes = rvHospitalWiseExpenseReport.LocalReport.Render(format,null,out mimeType,out encoding,out extension,out streamIds,out warnings);
+            byte[] bytes = rvExpense.LocalReport.Render(format,
+                                                        null,
+                                                        out mimeType,
+                                                        out encoding,
+                                                        out extension,
+                                                        out streamIds,
+                                                        out warnings);
 
             Response.Clear();
             Response.ContentType = mimeType;
@@ -219,36 +254,36 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
 
     }
 
-    #endregion 19.1 Excel Export Button Click Event
+    #endregion 18.1 Excel Export Button Click Event
 
-    #endregion 19.0 Export Data
+    #endregion 18.0 Export Data
 
-    #region 20.0 Cancel Button Event
+    #region 19.0 Cancel Button Event
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
         ClearControls();
     }
 
-    #endregion 20.0 Cancel Button Event
+    #endregion 19.0 Cancel Button Event
 
-    #region 22.0 ClearControls
+    #region 20.0 ClearControls
 
     private void ClearControls()
     {
 
         dtpFromDate.Text = String.Empty;
         dtpToDate.Text = String.Empty;
+        ddlHospitalID.SelectedIndex = 0;
 
         Div_SearchResult.Visible = false;
-        Div_ExportOption.Visible = false;
         //lblRecordInfoBottom.Text = CommonMessage.NoRecordFound();
         lblRecordInfoTop.Text = CommonMessage.NoRecordFound();
     }
 
-    #endregion 22.0 ClearControls
+    #endregion 20.0 ClearControls
 
-    #region 23.0 SetDefaultDateTime
+    #region 21.0 SetDefaultDateTime
     private void SetDefaultDateTime()
     {
         DateTime dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -258,19 +293,17 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
     }
     #endregion SetDefaultDateTime
 
-    #region REPORT
+    #region 21.0 Report
 
-    #region ShowReport
-
+    #region 21.1 ShowReport
     protected void ShowReport()
     {
         FillDataSet();
     }
 
-    #endregion ShowReport 
+    #endregion 21.1 ShowReport 
 
-    #region FillDataSet
-
+    #region 21.2 FillDataSet
     protected void FillDataSet()
     {
         foreach (DataRow dr in dtACC_Expense.Rows)
@@ -318,13 +351,13 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
         }
 
         SetReportParamater();
-        this.rvHospitalWiseExpenseReport.LocalReport.DataSources.Clear();
-        this.rvHospitalWiseExpenseReport.LocalReport.DataSources.Add(new ReportDataSource("dtACC_Expense", (DataTable)objdsACC_Expense.dtACC_Expense));
-        this.rvHospitalWiseExpenseReport.LocalReport.Refresh();
+        this.rvExpense.LocalReport.DataSources.Clear();
+        this.rvExpense.LocalReport.DataSources.Add(new ReportDataSource("dtACC_Expense", (DataTable)objdsACC_Expense.dtACC_Expense));
+        this.rvExpense.LocalReport.Refresh();
     }
-    #endregion FillDataSet
+    #endregion 21.2 FillDataSet
 
-    #region SetReportParamater
+    #region 21.3 SetReportParamater
     protected void SetReportParamater()
     {
         String RptTitle = "Hospital Wise Expense Report";
@@ -332,10 +365,27 @@ public partial class AdminPanel_RPT_RPT_HospitalWise_ExpenseList : System.Web.UI
         ReportParameter rptReportTitle = new ReportParameter("RptTitle", RptTitle);
         ReportParameter rptPrintDate = new ReportParameter("PrintDate", PrintDate.ToString());
 
-        this.rvHospitalWiseExpenseReport.LocalReport.SetParameters(new ReportParameter[] { rptReportTitle, rptPrintDate });
+        this.rvExpense.LocalReport.SetParameters(new ReportParameter[] { rptReportTitle, rptPrintDate });
 
     }
-    #endregion SetReportParamater 
+    #endregion 21.3 SetReportParamater 
 
-    #endregion REPORT
+    #endregion 21.0 REPORT
+
+    protected void rptGroupedExpenses_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            var dataItem = (dynamic)e.Item.DataItem;
+            var expenseDate = dataItem.ExpenseDate;
+            var dtDetails = dataItem.Details;
+
+            var rptExpenses = (Repeater)e.Item.FindControl("rptExpenses");
+            rptExpenses.DataSource = dtDetails;
+            rptExpenses.DataBind();
+
+            Label lblTotalAmount = (Label)e.Item.FindControl("lblTotalAmount");
+            lblTotalAmount.Text = string.Format(CV.DefaultCurrencyFormatWithDecimalPoint, dataItem.TotalAmount);
+        }
+    }
 }

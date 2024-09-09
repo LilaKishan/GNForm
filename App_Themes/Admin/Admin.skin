@@ -41,7 +41,7 @@ Default skin template. The following skins are provided as examples only.
 <asp:Button SkinID="btnEdit" runat="server" CssClass="btn btn-xs btn-circle blue-soft tooltips " Text="Edit"/>
 <asp:Button SkinID="btnCancel" runat="server" CssClass="btn default" Text="Cancel"/>
 <asp:Button SkinID="btnLoad" runat="server" CssClass="btn blue" Text="Load" />
-<asp:Button SkinID="btnShow" runat="server" CssClass="btn green ScrollToSave" Text="Show"/>
+<asp:Button SkinID="btnShow" runat="server" CssClass="btn blue ScrollToSave" Text="Show"/>
 <asp:Button SkinID="btnPDF" runat="server" CssClass="btn red-sunglo" Text="PDF"/>
 <asp:Button SkinID="btnPDF_CustomText" runat="server" CssClass="btn red-sunglo" />
 <asp:Button SkinID="btnExcel" runat="server" CssClass="btn green-meadow" Text="Excel"/>
@@ -420,3 +420,9 @@ Default skin template. The following skins are provided as examples only.
 </asp:HyperLink>
 
 <%-- View With IFrame--%>
+
+
+<%-- Custom SkinID--%>
+<asp:LinkButton SkinID="lbtnPDF" runat="server" CssClass="btn red" ><i class="fa fa-file-pdf-o" style="font-size:18px"></i>  PDF</asp:LinkButton>
+<asp:LinkButton SkinID="lbtnExcel" runat="server" CssClass="btn green" Text="Excel"><i class="fa fa-file-excel-o" style="font-size:18px"></i>  Excel</asp:LinkButton>
+<asp:Button SkinID="btnClear1" runat="server" CssClass="btn  btn-metal " Text="Clear"/>

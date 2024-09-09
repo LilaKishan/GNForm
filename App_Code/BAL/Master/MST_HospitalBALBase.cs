@@ -118,10 +118,14 @@ namespace GNForm3C.BAL
 			MST_HospitalDAL dalMST_Hospital = new MST_HospitalDAL();
 			return dalMST_Hospital.SelectPage(PageOffset, PageSize, out TotalRecords, Hospital, PrintName, PrintLine1, PrintLine2, PrintLine3, FooterName, ReportHeaderName);
 		}
+		public DataTable SelectDataTreePage(SqlInt32 HospitalID,SqlInt32 FinYearID,SqlDateTime OneDateOfMonth)
+		{
+			MST_HospitalDAL dalMST_Hospital=new MST_HospitalDAL();
+			return dalMST_Hospital.SelectDataTreePage(HospitalID,FinYearID, OneDateOfMonth);
+		}
+        #endregion SelectOperation
 
-		#endregion SelectOperation
-
-		#region ComboBox
+        #region ComboBox
 
         public DataTable SelecComboBox()
 		{
