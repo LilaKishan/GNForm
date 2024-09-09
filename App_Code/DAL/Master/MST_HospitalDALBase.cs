@@ -344,12 +344,12 @@ namespace GNForm3C.DAL
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_ACC_HospitalDataTree_SelectPage");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_MST_Hospital_SelectPageDataTree");
                 sqlDB.AddInParameter(dbCMD, "@HospitalID", SqlDbType.Int, HospitalID);
                 sqlDB.AddInParameter(dbCMD, "@FinYearID", SqlDbType.Int, FinYearID);
                 sqlDB.AddInParameter(dbCMD, "@OneDateOfMonth", SqlDbType.DateTime, OneDateOfMonth);
 
-                DataTable dtACC_IncomeTree = new DataTable("PR_ACC_HospitalDataTree_SelectPage");
+                DataTable dtACC_IncomeTree = new DataTable("PR_MST_Hospital_SelectPageDataTree");
 
                 DataBaseHelper DBH = new DataBaseHelper();
                 DBH.LoadDataTable(sqlDB, dbCMD, dtACC_IncomeTree);
